@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace AERS.Actuator
 {
-    public enum ActuatorState { idle, activating, active, errored };
+    public enum ActuatorState { idle, busy, waiting, errored };
 
     public interface IGenericActuator
     {
+        //The information of this actuator. 
         string actuatorType { get; }
-        string actuatorID { get; }
+        short actuatorID { get; }
+        string serialNumber { get; }
         string Vendor { get; }
         ActuatorState State { get; }
-        bool isWriting { get; }
 
         /*
          * Implements this function of sending the command to the actual actuator.
@@ -23,8 +24,8 @@ namespace AERS.Actuator
          */
         bool sendCommand(object Command);
 
-        event EventHandler onChange;
-        event EventHandler onStateChange;
-        event EventHandler onError;
+        event EventHandler onChange;        // The event will be triggered when the status of this actuator changed.
+        event EventHandler onStateChange;   // The event will be triggered when the state of this actuator changed.
+        event EventHandler onError;         // The event will be triggered when some errors occur on this actuator.
     }
 }

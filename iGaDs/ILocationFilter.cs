@@ -13,7 +13,7 @@ namespace AERS.iGaDs
         short Floor { get; set; }
 
         /*
-         * Determines weather the location of this location filter is in the affected area by the given AffectArea.
+         * Determines whether the location of this location filter is in the affected area by the given AffectArea.
          *
          * @return true if the result is true, or false if not.
          */

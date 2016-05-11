@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace AERS.Actuator
 {
-    class DeviceEventArgs<T> : EventArgs
+    class ActuatorEventArgs<T> : EventArgs
     {
-        public string deviceType { get; set; }
-        public List<short> deviceIDs { get; set; }
-        public string Command { get; set; }
-        public T additionalValue { get; set; }
+        public string actuatorType { get; set; }        // The type of the actuator, e.g. Door, Valve, Elevator.
+        public List<short> actuatorIDs { get; set; }    // The IDs of the specific type actuator.
+        public string Command { get; set; }             // The command willing to be sent to the actuators, e.g. Open, Close, On, Off.
+        public T additionalValue { get; set; }          // The details parameter of the command, like additionalValue 5 with command UpDegree of a thermostat. 
 
-        public DeviceEventArgs(string _deviceType, List<short> _deviceIDs, string _Command)
+        public ActuatorEventArgs(string _actuatorType, List<short> _actuatorIDs, string _Command)
         {
-            deviceType = _deviceType;
-            deviceIDs = _deviceIDs;
+            actuatorType = _actuatorType;
+            actuatorIDs = _actuatorIDs;
             Command = _Command;
         }
 
-        public DeviceEventArgs(string _deviceType, List<short> _deviceIDs, string _Command, T _additionalValue)
+        public ActuatorEventArgs(string _actuatorType, List<short> _actuatorIDs, string _Command, T _additionalValue)
         {
-            deviceType = _deviceType;
-            deviceIDs = _deviceIDs;
+            actuatorType = _actuatorType;
+            actuatorIDs = _actuatorIDs;
             Command = _Command;
             additionalValue = _additionalValue;
         }

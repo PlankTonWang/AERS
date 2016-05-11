@@ -8,6 +8,11 @@ namespace AERS.iGaDs
 {
     public interface IAlertMessageBuffer<T>
     {
+        bool isFull { get; }    // Represents whether this buffer is full or not.
+        bool isEmpty { get; }   // Represents whether this buffer is empty or not.
+        int Length { get; }     // The amount of the messages currently in this buffer.
+        int Size { get; }       // The size of this buffer.
+
         /**
          * Inserts the specified alerting message into this buffer. 
          *
@@ -22,18 +27,8 @@ namespace AERS.iGaDs
          */
         T Remove();
 
-        /**
-         * Gets the situation of this buffer.
-         * 
-         * @return true if this buffer is no space, or false if it is space available.
-         */
-        bool isFull();
-
-        /**
-         * Gets the situation of this buffer.
-         * 
-         * @return true if this buffer is empty, or false if it contains at least one message.
-         */
-        bool isEmpty();
+        event EventHandler onMessageAdded;  //This event will be triggered when a message is added to this buffer.
+        event EventHandler onBufferFull;    //This event will be triggered when the message amount reach the size of this buffer.
+        event EventHandler onBufferEmpty;   //This event will be triggered when the last message is removed from this buffer.
     }
 }

@@ -13,18 +13,19 @@ namespace AERS.Actuator
             // Null constructor.
         }
 
-        // The deviceDriver will be delegate to the eventHandler to subscribe events.
+        // The Control will be delegate to the eventHandler to subscribe events.
         public ActuatorController(EventHandler eventHandler)
         {
             eventHandler += new EventHandler(Control);
         }
 
+        // Subscribes more events.
         public void addHandler(EventHandler eventHandler)
         {
             eventHandler += new EventHandler(Control);
         }
 
-        // Implement this function with the device specific api or device driver, 
+        // Implements this function with the actuator specific APIs or actuator drivers.
         public abstract void Control(object sender, EventArgs e);
     }
 }

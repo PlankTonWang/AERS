@@ -13,18 +13,19 @@ namespace AERS.Sensor
             // Null constructor.
         }
 
-        // The sensorMonitorDriver will be delegate to the eventHandler to subscribe events.
+        // The Monitor will be delegate to the eventHandler to subscribe events.
         public SensorMonitor(EventHandler eventHandler)
         {
             eventHandler += new EventHandler(Monitor);
         }
 
+        // Subscribes more events.
         public void addHandler(EventHandler eventHandler)
         {
             eventHandler += new EventHandler(Monitor);
         }
 
-        // Implement this function with the sensor specific api or sensor monitor driver, 
+        // Implements this function with the sensor specific APIs or sensor drivers, 
         public abstract void Monitor(object sender, EventArgs e);
     }
 }
