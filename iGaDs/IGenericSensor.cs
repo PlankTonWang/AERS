@@ -10,7 +10,7 @@ namespace AERS.Sensor
 
     public interface IGenericSensor
     {
-        //The information of this sensor.
+        // The information of this sensor.
         string sensorType { get; }
         short sensorID { get; }
         string serialNumber { get; }

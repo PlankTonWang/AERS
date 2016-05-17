@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AERS.Actuator
 {
-    class ActuatorEventArgs<T> : EventArgs
+    public class ActuatorEventArgs<T> : EventArgs
     {
         public string actuatorType { get; set; }        // The type of the actuator, e.g. Door, Valve, Elevator.
         public List<short> actuatorIDs { get; set; }    // The IDs of the specific type actuator.

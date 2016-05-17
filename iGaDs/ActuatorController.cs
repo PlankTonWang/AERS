@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AERS.Actuator
 {
-    abstract class ActuatorController
+    public abstract class ActuatorController
     {
         public ActuatorController()
         {

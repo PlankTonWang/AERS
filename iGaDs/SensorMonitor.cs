@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AERS.Sensor
 {
-    abstract class SensorMonitor
+    public abstract class SensorMonitor
     {
         public SensorMonitor()
         {

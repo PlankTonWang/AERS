@@ -10,7 +10,7 @@ namespace AERS.Actuator
 
     public interface IGenericActuator
     {
-        //The information of this actuator. 
+        // The information of this actuator. 
         string actuatorType { get; }
         short actuatorID { get; }
         string serialNumber { get; }

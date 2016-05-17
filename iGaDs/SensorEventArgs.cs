@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AERS.Sensor
 {
-    class SensorEventArgs<T> : EventArgs
+    public class SensorEventArgs<T> : EventArgs
     {
         public string sensorType { get; set; }       // The type of the sensor, e.g. Temperature, AirPressure, Humidity.
         public List<short> sensorIDs { get; set; }   // The IDs of the specific type sensor.

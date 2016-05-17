@@ -9,7 +9,7 @@ namespace AERS.iGaDs.Configuration
     public interface IConfiguration
     {
         IEnumerable<IRuleTable> ruleTables { get; set; }
-        ILocationInfo LocationInfo { get; set; }
+        ILocationInfo locationInfo { get; set; }
         IProfile Profile { get; set; }
 
         /**

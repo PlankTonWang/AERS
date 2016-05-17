@@ -28,5 +28,7 @@ namespace AERS.iGaDs
          * @return a collection containing Action
          */
         IEnumerable<Configuration.IAction> ruleProcess(CAP.ICAP CAP, bool isLocated);
+
+        event EventHandler onRuleProcessed; // The event will be triggered when the processing of ruleProcess is completed.
     }
 }

@@ -8,15 +8,13 @@ namespace AERS.iGaDs
 {
     public interface ILocationFilter
     {
-        double Latitude { get; set; }
-        double Longitude { get; set; }
-        short Floor { get; set; }
-
         /*
-         * Determines whether the location of this location filter is in the affected area by the given AffectArea.
+         * Determines whether the location of this location filter is in the affected area by the given AffectArea, and the location of device.
          *
          * @return true if the result is true, or false if not.
          */
-        bool isLocated(CAP.IAffectArea affectArea);
+        bool isInsideAffectedArea(CAP.IAffectArea affectArea, Configuration.ILocationInfo deviceCurrentLocation);
+
+        event EventHandler onDetermined;    // The event will be triggered when the result of isInsideAffectedArea is determined.
     }
 }

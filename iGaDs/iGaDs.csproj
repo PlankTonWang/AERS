@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ISemanticTable.cs" />
     <Compile Include="IActionsHandler.cs" />
     <Compile Include="ActuatorController.cs" />
     <Compile Include="ActuatorEventArgs.cs" />
@@ -49,7 +50,7 @@
     <Compile Include="CAP\IAffectArea.cs" />
     <Compile Include="CAP\IBaseAlertInfo.cs" />
     <Compile Include="CAP\ICAP.cs" />
-    <Compile Include="CAP\IParameter.cs" />
+    <Compile Include="CAP\Parameter.cs" />
     <Compile Include="CAP\IResource.cs" />
     <Compile Include="Configuration\IAction.cs" />
     <Compile Include="Configuration\ILocationInfo.cs" />
@@ -57,9 +58,11 @@
     <Compile Include="Configuration\IRule.cs" />
     <Compile Include="Configuration\IRuleTable.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="IiGaDs.cs" />
     <Compile Include="IGenericActuator.cs" />
     <Compile Include="IGenericSensor.cs" />
     <Compile Include="ILocationFilter.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IRuleEngine.cs" />
     <Compile Include="IUniversalParser.cs" />
