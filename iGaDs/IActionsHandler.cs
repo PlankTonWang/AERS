@@ -8,8 +8,10 @@ namespace AERS.iGaDs
 {
     public interface IActionsHandler
     {
-        // Implement this function to trigger the events corresponding to the actions.
-        void doActions(IEnumerable<Configuration.IAction> Actions); 
+        /**
+         * Implement this function to trigger the events corresponding to the input actions.
+         */
+        void doActions(IEnumerable<Configuration.Action> Actions); 
 
         event EventHandler temperatureHandler;  // The event will be triggered when there is an action of monitoring temperature.
         event EventHandler airPressureHandler;  // The event will be triggered when there is an action of monitoring air pressure.

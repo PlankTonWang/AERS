@@ -8,7 +8,7 @@ namespace AERS.iGaDs
 {
     public interface IUniversalParser
     {
-        Configuration.IProfile Profile { get; set; }    // The profile of this parser, this parser will parse the alerting message according to the semantic table and schema of the profile.
+        Configuration.Profile Profile { get; set; }    // The profile of this parser, this parser will parse the alerting message according to the semantic table and schema of the profile.
 
         /**
         * Processes a parse for the given alerting message, and returning the result in CAP type.
@@ -16,7 +16,7 @@ namespace AERS.iGaDs
         *
         * @return a CAP
         */
-        CAP.ICAP Parse(string alertingMessage);
+        CAP.CAP Parse(string alertingMessage);
 
         event EventHandler onParsed;    // The event will be triggered when the parsing of Parse is completed.
         event EventHandler onErrored;   // The event will be triggered when there is any error occured during parsing, e.g. xml syntax error.

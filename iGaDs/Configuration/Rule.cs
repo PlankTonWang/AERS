@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace AERS.iGaDs.Configuration
 {
-    public enum Operator { equal, greater, less };
+    public enum OperatorOfRule { EQUEL, GREATER, LESS, GREATER_AND_EQUEL, LESS_AND_EQUEL };
 
-    public interface IRule
+    public class Rule
     {
         string Condition { get; set; }
-        Operator Operator { get; set; }
+        OperatorOfRule operatorOfRule { get; set; }
         object Value { get; set; }
+
+        public Rule()
+        {
+            // Null constructor.
+        }
     }
 }

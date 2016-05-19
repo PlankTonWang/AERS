@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,33 +42,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ISemanticTable.cs" />
+    <Compile Include="Configuration\SemanticTable.cs" />
     <Compile Include="IActionsHandler.cs" />
-    <Compile Include="ActuatorController.cs" />
-    <Compile Include="ActuatorEventArgs.cs" />
+    <Compile Include="Device\ActuatorController.cs" />
+    <Compile Include="Device\ActuatorEventArgs.cs" />
     <Compile Include="IAlertMessageBuffer.cs" />
-    <Compile Include="CAP\IAdditionalAlertInfo.cs" />
-    <Compile Include="CAP\IAffectArea.cs" />
-    <Compile Include="CAP\IBaseAlertInfo.cs" />
-    <Compile Include="CAP\ICAP.cs" />
+    <Compile Include="CAP\AdditionalAlertInfo.cs" />
+    <Compile Include="CAP\AffectArea.cs" />
+    <Compile Include="CAP\BaseAlertInfo.cs" />
+    <Compile Include="CAP\CAP.cs" />
     <Compile Include="CAP\Parameter.cs" />
-    <Compile Include="CAP\IResource.cs" />
-    <Compile Include="Configuration\IAction.cs" />
-    <Compile Include="Configuration\ILocationInfo.cs" />
-    <Compile Include="Configuration\IProfile.cs" />
-    <Compile Include="Configuration\IRule.cs" />
-    <Compile Include="Configuration\IRuleTable.cs" />
-    <Compile Include="Configuration\IConfiguration.cs" />
-    <Compile Include="IiGaDs.cs" />
-    <Compile Include="IGenericActuator.cs" />
-    <Compile Include="IGenericSensor.cs" />
+    <Compile Include="CAP\Resource.cs" />
+    <Compile Include="Configuration\Action.cs" />
+    <Compile Include="Configuration\LocationInfo.cs" />
+    <Compile Include="Configuration\Profile.cs" />
+    <Compile Include="Configuration\Rule.cs" />
+    <Compile Include="Configuration\RuleTable.cs" />
+    <Compile Include="Device\GenericDevice.cs" />
+    <Compile Include="IBasicDataCollection.cs" />
+    <Compile Include="IBasicFileLoader.cs" />
+    <Compile Include="iGaDs.cs" />
+    <Compile Include="Device\GenericActuator.cs" />
+    <Compile Include="Device\GenericSensor.cs" />
     <Compile Include="ILocationFilter.cs" />
-    <Compile Include="ILogger.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IRuleEngine.cs" />
     <Compile Include="IUniversalParser.cs" />
-    <Compile Include="SensorEventArgs.cs" />
-    <Compile Include="SensorMonitor.cs" />
+    <Compile Include="Device\SensorEventArgs.cs" />
+    <Compile Include="Device\SensorMonitor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,34 +8,21 @@ namespace AERS.iGaDs.CAP
 {
     public class Parameter
     {
-        private string _valueName;
-        private string _Value;
-
         /**
          * The value name and the value of this parameter.
          */
-        string valueName
-        {
-            set { _valueName = value; }
-            get { return _valueName; }
-        }
-
-        string Value
-        {
-            set { _Value = value; }
-            get { return _Value; }
-        }
+        string valueName { set; get; }
+        string Value { set; get; }
 
         public Parameter()
         {
-            _valueName = "";
-            _Value = "";
+            // Null constructor.
         }
 
-        public Parameter( string valueName, string Value)
+        public Parameter( string _valueName, string _Value)
         {
-            _valueName = valueName;
-            _Value = Value;
+            valueName = _valueName;
+            Value = _Value;
         }
     }
 }

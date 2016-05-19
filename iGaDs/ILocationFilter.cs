@@ -13,7 +13,7 @@ namespace AERS.iGaDs
          *
          * @return true if the result is true, or false if not.
          */
-        bool isInsideAffectedArea(CAP.IAffectArea affectArea, Configuration.ILocationInfo deviceCurrentLocation);
+        bool isInsideAffectedArea(CAP.AffectArea affectArea, Configuration.LocationInfo deviceCurrentLocation);
 
         event EventHandler onDetermined;    // The event will be triggered when the result of isInsideAffectedArea is determined.
     }
