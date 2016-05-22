@@ -1,6 +1,6 @@
 ﻿/**
  * 
- * BaseAlertInfo.cs defines a class for iGaDs and CAP API in AERS framework.
+ * Profile.cs defines a class for configuration of iGaDs API in AERS framework.
  * 
  * Copyright (c) 2016 : None
  * 
@@ -14,12 +14,12 @@
  * 
  * File Name:
  * 
- * 		CAP.cs
+ * 		Profile.cs
  * 
  * Abstract:
  * 
- * 		BaseAlertInfo class is a data structure for storing the base information of an CAP,
- * 		and it usually used to be a member element of CAP class.
+ * 		Profile class is a data structure for storing the CAP profile of configuration files,
+ * 		and it usually provides iGaDs with CAP schema, semantic, or other definition info.
  * 
  * Authors:
  * 
@@ -39,45 +39,47 @@
  *     .NET Framework 4.5.2
  */
 
+using System.Xml.Schema;
 using System.Collections.Generic;
 
-namespace AERS.CAP
+namespace AERS.iGaDs.Configuration
 {
 
-    public class BaseAlertInfo : IBasicDataCollection
+    public class Profile : IBasicDataCollection, IBasicXmlLoader
     {
-            
-        // These properties are defined for storing the mandatory elements of a CAP.
-        // Most of the elements are in string type.
-        // Some elements that may exist at least once, are kept in a collection of IEnumerable type.
-        // The IEnumerable type represents all the types that inherit IEnumerable interface can be used.
 
-        public string Identifier { get; set; }
+        // This property stores the name of the profile.
+        public string ProfileName { get; set; }
 
-        public string Sender { get; set; }
+        // This property stores the version of the profile.
+        public float Version { get; set; }
 
-        public string SentTime { get; set; }
+        // This property stores the semantic table.
+        public SemanticTable SemanticTable { get; set; }
 
-        public string Status { get; set; }
+        // This property stores the Xml schema.
+        public XmlSchema XmlSchema { get; set; }
 
-        public string MsgType { get; set; }
-
-        public string Scope { get; set; }
-
-        public IEnumerable<string> EventCategory { get; set; }
-
-        public string EventType { get; set; }
-
-        public string Urgency { get; set; }
-
-        public string Severity { get; set; }
-
-        public string Certainty { get; set; }
+        // profileInfo field is used to store the additional information of a profile in key-value pairs.
+        // Developers of AERS are able to put the customized info of a profile into profileInfo.
+        private IDictionary<string, object> profileInfo;
 
         // Public constructor.
-        public BaseAlertInfo()
+        public Profile()
         {
             // Null constructor.
+        }
+
+        // Defined in IBasicXmlLoader.cs.
+        public void LoadXmlFromFile(string XmlFilePath)
+        {
+            // To-do
+        }
+
+        // Defined in IBasicXmlLoader.cs.
+        public void LoadXmlFromString(string XmlString)
+        {
+            // To-do
         }
 
         // Defined in IBasicDataCollection.cs.

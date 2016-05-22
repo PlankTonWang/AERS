@@ -42,33 +42,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\SemanticTable.cs" />
-    <Compile Include="IActionsHandler.cs" />
+    <Compile Include="iGaDs\Configuration\SemanticTable.cs" />
+    <Compile Include="iGaDs\IActionsHandler.cs" />
     <Compile Include="Device\ActuatorController.cs" />
     <Compile Include="Device\ActuatorEventArgs.cs" />
-    <Compile Include="IAlertMessageBuffer.cs" />
+    <Compile Include="iGaDs\IAlertMessageBuffer.cs" />
     <Compile Include="CAP\AdditionalAlertInfo.cs" />
     <Compile Include="CAP\AffectArea.cs" />
     <Compile Include="CAP\BaseAlertInfo.cs" />
     <Compile Include="CAP\CAP.cs" />
     <Compile Include="CAP\Parameter.cs" />
     <Compile Include="CAP\Resource.cs" />
-    <Compile Include="Configuration\Action.cs" />
-    <Compile Include="Configuration\LocationInfo.cs" />
-    <Compile Include="Configuration\Profile.cs" />
-    <Compile Include="Configuration\Rule.cs" />
-    <Compile Include="Configuration\RuleTable.cs" />
+    <Compile Include="iGaDs\Configuration\Action.cs" />
+    <Compile Include="iGaDs\Configuration\LocationInfo.cs" />
+    <Compile Include="iGaDs\Configuration\Profile.cs" />
+    <Compile Include="iGaDs\Configuration\Rule.cs" />
+    <Compile Include="iGaDs\Configuration\RuleTable.cs" />
     <Compile Include="Device\GenericDevice.cs" />
     <Compile Include="IBasicDataCollection.cs" />
-    <Compile Include="IBasicFileLoader.cs" />
-    <Compile Include="iGaDs.cs" />
+    <Compile Include="IBasicXMLLoader.cs" />
+    <Compile Include="iGaDs\iGaDs.cs" />
     <Compile Include="Device\GenericActuator.cs" />
     <Compile Include="Device\GenericSensor.cs" />
-    <Compile Include="ILocationFilter.cs" />
+    <Compile Include="iGaDs\ILocationFilter.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IRuleEngine.cs" />
-    <Compile Include="IUniversalParser.cs" />
+    <Compile Include="iGaDs\IRuleEngine.cs" />
+    <Compile Include="iGaDs\IUniversalParser.cs" />
     <Compile Include="Device\SensorEventArgs.cs" />
     <Compile Include="Device\SensorMonitor.cs" />
   </ItemGroup>

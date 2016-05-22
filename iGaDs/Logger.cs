@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AERS.iGaDs
+namespace AERS
 {
     public abstract class Logger
     {

@@ -1,6 +1,6 @@
 ﻿/**
  * 
- * CAP.cs defines a class for iGaDs API in AERS framework.
+ * LocationInfo.cs defines a class for configuration of iGaDs API in AERS framework.
  * 
  * Copyright (c) 2016 : None
  * 
@@ -14,12 +14,12 @@
  * 
  * File Name:
  * 
- * 		CAP.cs
+ * 		LocationInfo.cs
  * 
  * Abstract:
  * 
- * 		CAP class is the main data structrue representing a CAP (Common Alerting Protocol message), 
- * 		and it is designed to store a CAP after it is parsed from a Xml parser.
+ * 		LocationInfo class is a data structure for storing the loaction information of configuration files,
+ * 		and it usually provides iGaDs with the static device location info.
  * 
  * Authors:
  * 
@@ -39,22 +39,26 @@
  *     .NET Framework 4.5.2
  */
 
-using System.Collections.Generic;
-
-namespace AERS.CAP
+namespace AERS.iGaDs.Configuration
 {
 
-    public class CAP : IBasicXmlLoader
+    public class LocationInfo : IBasicXmlLoader
     {
 
-        // This property is an object storing the base alerting information of an CAP. 
-        BaseAlertInfo BaseAlertInfo { get; set; }
+        // This property stores latitude of an coordinate.
+        public double Latitude { get; set; }
 
-        // This property is an object storing the rest part information of an CAP.
-        IEnumerable<AdditionalAlertInfo> AdditionalAlertInfos { get; set; }
+        // This property stores longitude of an coordinate.
+        public double Longitude { get; set; }
 
+        // This property stores altitude of an coordinate.
+        public double Altitude { get; set; }
+
+        // This property stores floor info of a building.
+        public short Floor { get; set; }
+        
         // Public constructor.
-        public CAP()
+        public LocationInfo()
         {
             // Null constructor.
         }
