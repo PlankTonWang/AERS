@@ -19,7 +19,8 @@
  * Abstract:
  * 
  * 		ActuatorController class defines methods for controlling actuators.
- * 		It will subscribe events to get the actions, then consumes the actions to work.
+ * 		It will subscribe events to get Actions, then consumes the Actions to work.
+ *      (Note: The Action is a class defined in Action.cs)
  * 
  * Authors:
  * 
@@ -53,7 +54,7 @@ namespace AERS.Device
             // Null constructor.
         }
 
-        // Public constructor. 
+        // Public constructor with an input EventHandler.
         // The ControlActuator method will be delegated to the given event handler to subscribe an event.
         public ActuatorController(EventHandler eventHandler)
         {
@@ -67,7 +68,7 @@ namespace AERS.Device
         }
 
         // This method is defined to be called with an event handler.
-        // It controls the actuators according to information describing in the given EventArgs e.
+        // It controls actuators according to information describing in the given EventArgs e.
         public void ControlActuator(object sender, EventArgs e)
         {
             // To-do

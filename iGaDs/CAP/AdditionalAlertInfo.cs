@@ -1,6 +1,6 @@
 ﻿/**
 * 
-* AdditionalAlertInfo.cs defines a class for iGaDs and CAP API in AERS framework.
+* AdditionalAlertInfo.cs defines a class for CAP API in AERS framework.
 * 
 * Copyright (c) 2016 : None
 * 
@@ -19,7 +19,7 @@
 * Abstract:
 * 
 * 		AdditionalAlertInfo class is a data structure for storing the rest data other than the base information of an CAP,
-* 		and it usually used to be a member element of CAP class.
+* 		and it usually used to be a member element of Alert class.
 * 
 * Authors:
 * 

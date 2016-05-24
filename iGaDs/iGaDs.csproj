@@ -43,14 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="iGaDs\Configuration\SemanticTable.cs" />
-    <Compile Include="iGaDs\IActionsHandler.cs" />
+    <Compile Include="iGaDs\ActionsHandler.cs" />
     <Compile Include="Device\ActuatorController.cs" />
     <Compile Include="Device\ActuatorEventArgs.cs" />
-    <Compile Include="iGaDs\IAlertMessageBuffer.cs" />
+    <Compile Include="iGaDs\AlertMessageBuffer.cs" />
     <Compile Include="CAP\AdditionalAlertInfo.cs" />
     <Compile Include="CAP\AffectArea.cs" />
     <Compile Include="CAP\BaseAlertInfo.cs" />
-    <Compile Include="CAP\CAP.cs" />
+    <Compile Include="CAP\Alert.cs" />
     <Compile Include="CAP\Parameter.cs" />
     <Compile Include="CAP\Resource.cs" />
     <Compile Include="iGaDs\Configuration\Action.cs" />
@@ -64,11 +64,11 @@
     <Compile Include="iGaDs\iGaDs.cs" />
     <Compile Include="Device\GenericActuator.cs" />
     <Compile Include="Device\GenericSensor.cs" />
-    <Compile Include="iGaDs\ILocationFilter.cs" />
+    <Compile Include="iGaDs\LocationFilter.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="iGaDs\IRuleEngine.cs" />
-    <Compile Include="iGaDs\IUniversalParser.cs" />
+    <Compile Include="iGaDs\RuleEngine.cs" />
+    <Compile Include="iGaDs\UniversalParser.cs" />
     <Compile Include="Device\SensorEventArgs.cs" />
     <Compile Include="Device\SensorMonitor.cs" />
   </ItemGroup>

@@ -19,7 +19,8 @@
  * Abstract:
  * 
  * 		SensorEventArgs class inherits EventArgs class and defines properties.
- * 		It describes the information of an action for a sensor-monitoring event.
+ * 		It describes the same information as an Action for a sensor-monitoring event.
+ *      (Note: The Action is a class defined in Action.cs)
  * 
  * Authors:
  * 

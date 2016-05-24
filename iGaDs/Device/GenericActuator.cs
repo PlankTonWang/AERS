@@ -20,8 +20,12 @@
  * 
  * 		Since an actuator is a kind of device it has all characteristic of a device,
  *      and furthermore it also has some actuator specific characteristic.
+ *
  * 		According to this, GenericActuator is defined as an abstract class,
  *      and it inherits GenericDevice class then defines abstract members.
+ *
+ *      Developers may create their actuators by inheriting the GenericActuator,
+ *      and implements the methods with actuator drivers and APIs.
  * 
  * Authors:
  * 
@@ -67,7 +71,7 @@ namespace AERS.Device
         abstract public void HandleCommand(object command);
 
         // This event will be triggered when the status of this actuator changed.  
-        event EventHandler ActuatorStatusChangedEvent;    
+        public event EventHandler ActuatorStatusChangedEvent;    
           
     }
 

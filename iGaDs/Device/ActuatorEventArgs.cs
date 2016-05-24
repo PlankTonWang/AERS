@@ -19,7 +19,8 @@
  * Abstract:
  * 
  * 		ActuatorEventArgs class inherits EventArgs class and defines properties.
- * 		It describes the information of an action for an actuator-controlling event.
+ * 		It describes the same information as an Action for an actuator-controlling event.
+ *      (Note: The Action is a class defined in Action.cs)
  * 
  * Authors:
  * 

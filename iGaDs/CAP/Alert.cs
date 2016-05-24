@@ -1,6 +1,6 @@
 ﻿/**
  * 
- * CAP.cs defines a class for iGaDs API in AERS framework.
+ * Alert.cs defines a class for CAP API in AERS framework.
  * 
  * Copyright (c) 2016 : None
  * 
@@ -14,11 +14,11 @@
  * 
  * File Name:
  * 
- * 		CAP.cs
+ * 		Alert.cs
  * 
  * Abstract:
  * 
- * 		CAP class is the main data structrue representing a CAP (Common Alerting Protocol message), 
+ * 		Alert class is the main data structrue representing a CAP (Common Alerting Protocol message), 
  * 		and it is designed to store a CAP after it is parsed from a Xml parser.
  * 
  * Authors:
@@ -44,17 +44,17 @@ using System.Collections.Generic;
 namespace AERS.CAP
 {
 
-    public class CAP : IBasicXmlLoader
+    public class Alert : IBasicXmlLoader
     {
 
-        // This property is an object storing the base alerting information of an CAP. 
+        // This property is an object storing the base alerting information of an Alert. 
         BaseAlertInfo BaseAlertInfo { get; set; }
 
-        // This property is an object storing the rest part information of an CAP.
+        // This property is an object storing the rest part information of an Alert.
         IEnumerable<AdditionalAlertInfo> AdditionalAlertInfos { get; set; }
 
         // Public constructor.
-        public CAP()
+        public Alert()
         {
             // Null constructor.
         }

@@ -42,7 +42,7 @@
 namespace AERS.iGaDs.Configuration
 {
 
-    // This enumeration defines the operator used in a rule.
+    // This enumeration defines the operators used in a rule.
     public enum OperatorOfRule { Equel, Greater, Less, GreaterAndEquel, LessAndEquel };
 
     public class Rule

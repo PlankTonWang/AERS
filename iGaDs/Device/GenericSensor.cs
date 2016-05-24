@@ -20,8 +20,12 @@
  * 
  * 		Since a sensor is a kind of device it has all characteristic of a device,
  *      and furthermore it also has some sensor specific characteristic.
+ *
  * 		According to this, GenericSensor is defined as an abstract class,
  *      and it inherits GenericDevice class then defines abstract members.
+ *
+ *      Developers may create their sensors by inheriting the GenericSensor,
+ *      and implements the methods with sensor drivers and APIs.
  * 
  * Authors:
  * 
@@ -72,7 +76,7 @@ namespace AERS.Device
         abstract public void Stop();
 
         // The event will be triggered when the output data of the sensor is updated.
-        event EventHandler SensorOutputUpdatedEvent;  
+        public event EventHandler SensorOutputUpdatedEvent;  
               
     }
 

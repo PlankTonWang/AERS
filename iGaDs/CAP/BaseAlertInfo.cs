@@ -1,6 +1,6 @@
 ﻿/**
  * 
- * BaseAlertInfo.cs defines a class for iGaDs and CAP API in AERS framework.
+ * BaseAlertInfo.cs defines a class for CAP API in AERS framework.
  * 
  * Copyright (c) 2016 : None
  * 
@@ -19,7 +19,7 @@
  * Abstract:
  * 
  * 		BaseAlertInfo class is a data structure for storing the base information of an CAP,
- * 		and it usually used to be a member element of CAP class.
+ * 		and it usually used to be a member element of Alert class.
  * 
  * Authors:
  * 
@@ -46,8 +46,8 @@ namespace AERS.CAP
 
     public class BaseAlertInfo : IBasicDataCollection
     {
-            
-        // These properties are defined for storing the mandatory elements of a CAP.
+
+        // These properties are defined for storing the mandatory elements of an Alert.
         // Most of the elements are in string type.
         // Some elements that may exist at least once, are kept in a collection of IEnumerable type.
         // The IEnumerable type represents all the types that inherit IEnumerable interface can be used.

@@ -1,6 +1,6 @@
 ﻿/**
 * 
-* AffectArea.cs defines a class for iGaDs and CAP API in AERS framework.
+* AffectArea.cs defines a class for CAP API in AERS framework.
 * 
 * Copyright (c) 2016 : None
 * 

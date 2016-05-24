@@ -1,6 +1,6 @@
 ﻿/**
  * 
- * IBasicDataCollection.cs is an interface in AERS framework.
+ * IBasicDataCollection.cs defines an interface for AERS framework.
  * 
  * Copyright (c) 2016 : None
  * 

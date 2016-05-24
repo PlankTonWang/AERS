@@ -1,52 +1,112 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+ * 
+ * GenericDevice.cs defines an abstract class for device API in AERS framework.
+ * 
+ * Copyright (c) 2016 : None
+ * 
+ * Project Name:
+ * 
+ * 		AERS (Active Emergency Reponse System) framework
+ * 
+ * Version:
+ * 
+ * 		1.0
+ * 
+ * File Name:
+ * 
+ * 		GenericDevice.cs
+ * 
+ * Abstract:
+ * 
+ * 		GenericDevice class is a generic interface for devices in AERS framework.     
+ * 		It defines some properties, methods and events for realizing the characteristic of a device.
+ *
+ *      Developers may create some specific types of devices by inheriting the GenericActuator,
+ *      and implements the methods with device drivers and APIs.   
+ * 
+ * Authors:
+ * 
+ * 		Gary Wang, garywang5566@gmail.com 20-May-2016
+ * 
+ * License:
+ * 
+ * 		GPL 3.0 This file is subject to the terms and conditions defined
+ * 		in file 'COPYING.txt', which is part of this source code package.
+ * 
+ * Major Revisions:
+ * 	
+ *     None
+ *
+ * Environment:
+ *
+ *     .NET Framework 4.5.2
+ */
+
+using System;
 
 namespace AERS.Device
 {
-    public enum DeviceState { UNINITIALIZED, INITIALIZING, IDLE, BUSY, WAITING, REMOVING, REMOVED, ERRORED };
+    // This enumeration defines the states of a device.
+    public enum DeviceState { Uninitialized, Initializing, Idle, Busy, Waiting, Removing, Removed, Errored };
 
     public abstract class GenericDevice
     {
-        public string deviceType { get; protected set; }
-        public string deviceID { get; protected set; }
-        public string deviceSerialNumber { get; protected set; }
-        public string deviceVendor { get; protected set; }
-        public DeviceState deviceState { get; protected set; }
 
+        // These properties store some information of this device.
+        // They all can only be set within the body of the class.
+
+        // This property stores the type of the device, e.g. "Door".
+        public string DeviceType { get; protected set; }
+
+        // This property stores the ID of the device, e.g. "001".
+        public string DeviceID { get; protected set; }
+
+        // This property stores the serial number of the device.
+        public string DeviceSerialNumber { get; protected set; }
+
+        // This property stores the vendor of the device.
+        public string DeviceVendor { get; protected set; }
+
+        // This property indicates to the state of this device.
+        public DeviceState DeviceState { get; protected set; }
+
+        // Public constructor.
+        // It will initialize all the properties in construction time.
         public GenericDevice()
         {
-            deviceType = "Unknown";
-            deviceID = "Unknown";
-            deviceSerialNumber = "Unknown";
-            deviceVendor = "Unknown";
-            deviceState = DeviceState.UNINITIALIZED;
+            DeviceType = "Unknown";
+            DeviceID = "Unknown";
+            DeviceSerialNumber = "Unknown";
+            DeviceVendor = "Unknown";
+            DeviceState = DeviceState.Uninitialized;
         }
 
-        /**
-         * Changes the deviceType from UNINITIALIZED to INITIALIZING.
-         * Initializes this device, connects it to the actual device and sets the values of the properties.
-         * Changes the deviceType from INITIALIZING to IDLE if the initialization successed.
-         */
+        // Implements this method for initializing this device by connecting to the actual device,
+        // and updates all the properties with the information read from the actual device.
+        // It will first update the DeviceState to Initializing in the beginning of the method,
+        // and updates the DeviceState to Idle after the initialization.
+        // It publishes a DeviceStateChangedEvent event when the device state changed.
         public abstract void Initialize();
 
-        /**
-         * Changes the deviceState to REMOVING.
-         * Removes the device and  disconnects it to the actual device then free the relevant resource.
-         * Changes the deviceType from REMOVING to REMOVED if the remove successed.
-         */
+        // Implements this method for removing this device by disconnecting to the actual device.
+        // It will first update the DeviceState to Removing in the beginning of the method,
+        // and updates the DeviceState to Removed after the removing.
+        // It publishes a DeviceStateChangedEvent event when the device state changed.
         public abstract void Remove();
 
-        /**
-         * Updates the deviceState with the given nextState, and checks the validity of the state transformation before applying the new state.
-         * For example, it is invalid to update the deviceState from IDLE to INITIALIZING, then the state transformation will fail.
-         * @returns true if it successfully updated the deviceState, or returns false if it failed.
-         */
-        protected abstract bool updateState(DeviceState nextState);
+        // This method can only be called within the body of the class,
+        // since the state of the device can not be modified by others but device itself.
+        // Implements this method for updating the DeviceState with the given next-state,
+        // and it should check the validity of this update according to the state changed order.
+        // It will returns true if DeviceState updated successfully, or false if unsuccessfully.
+        protected abstract bool UpdateState(DeviceState nextState);
 
-        event EventHandler onStateChange;   // The event will be triggered when the deviceState changed.
-        event EventHandler onError;         // The event will be triggered when some errors occur on this device.
+        // This event will be triggered when the state of this device changed.
+        public event EventHandler DeviceStateChangedEvent;
+
+        // This event will be triggered when some errors occurred on this device.   
+        public event EventHandler DeviceErroredEvent;         
+
     }
+
 }
