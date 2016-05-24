@@ -44,7 +44,7 @@ using System.Collections.Generic;
 namespace AERS.CAP
 {
 
-    public abstract class Resource : IBasicDataCollection
+    public class Resource : IBasicDataCollection
     {
         
         //  The mandatory element of a Resource.

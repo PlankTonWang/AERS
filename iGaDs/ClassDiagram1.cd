@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AERS.CAP.AdditionalAlertInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAIAAAAABEAAQAAAAAAAA=</HashCode>
+      <FileName>CAP\AdditionalAlertInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.CAP.AffectArea" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIQAAAAAAAAAAAAAAAAAAABEAAQgAAAAAAA=</HashCode>
+      <FileName>CAP\AffectArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.CAP.Alert" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>CAP\Alert.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.CAP.BaseAlertInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAgEAIAAACAAAAAAAAAEAAAQAABEAAQAQCQKAAA=</HashCode>
+      <FileName>CAP\BaseAlertInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.CAP.Resource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACIAAAAAAAAAAAAAAACAAAABEAAQAAAAAAAA=</HashCode>
+      <FileName>CAP\Resource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.Device.ActuatorController" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAgAAA=</HashCode>
+      <FileName>Device\ActuatorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Device.ActuatorEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Device\ActuatorEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Device.GenericActuator" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Device\GenericActuator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Device.GenericDevice" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAYAAAAAABAAAIAIAAAAAAIAAFACAAAA=</HashCode>
+      <FileName>Device\GenericDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Device.GenericSensor" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAAAAAAgAAAAAAAAAAAAAAIIAAAAAAAAA=</HashCode>
+      <FileName>Device\GenericSensor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Device.SensorEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACMAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Device\SensorEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Device.SensorMonitor" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Device\SensorMonitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Logger" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAEAAAAAAAgAIEIAAAAADAIAAAA=</HashCode>
+      <FileName>Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.ActionsHandler" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>iGaDs\ActionsHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.AlertMessageBuffer&lt;T&gt;" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAAAAQAABAgAAAAAAABABAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>iGaDs\AlertMessageBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.iGaDs" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIiAAIAAQAAEAGIBECAAAAAAAAAABAABBAIAAA=</HashCode>
+      <FileName>iGaDs\iGaDs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.LocationFilter" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>iGaDs\LocationFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.RuleEngine" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAIAAA=</HashCode>
+      <FileName>iGaDs\RuleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.UniversalParser" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAACAAAAA=</HashCode>
+      <FileName>iGaDs\UniversalParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.Configuration.Action" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAEEAAAAA=</HashCode>
+      <FileName>iGaDs\Configuration\Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.Configuration.LocationInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAkAAAAJgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>iGaDs\Configuration\LocationInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.iGaDs.Configuration.Profile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAQAAAIAAAAEAIAABAAAAAAAAAABEAASAAAAAAAA=</HashCode>
+      <FileName>iGaDs\Configuration\Profile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.iGaDs.Configuration.Rule" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAA=</HashCode>
+      <FileName>iGaDs\Configuration\Rule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.Configuration.RuleTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAIAAAAEEAAAABAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>iGaDs\Configuration\RuleTable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AERS.iGaDs.Configuration.SemanticTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIAAAIAAAAIAAEAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>iGaDs\Configuration\SemanticTable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Struct Name="AERS.CAP.Parameter" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAA=</HashCode>
+      <FileName>CAP\Parameter.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="AERS.IBasicDataCollection" Collapsed="true">
+    <Position X="7.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAABEAAQAAAAAAAA=</HashCode>
+      <FileName>IBasicDataCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AERS.IBasicXmlLoader" Collapsed="true">
+    <Position X="9.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IBasicXMLLoader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="AERS.Device.DeviceState" Collapsed="true">
+    <Position X="7.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABCRAAAAEAAAAAgAAAAAAAAAAAAEAAAQAAAAAA=</HashCode>
+      <FileName>Device\GenericDevice.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AERS.iGaDs.Configuration.OperatorOfRule" Collapsed="true">
+    <Position X="9.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAEAQQBAAAAAAAA=</HashCode>
+      <FileName>iGaDs\Configuration\Rule.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft JhengHei UI" Size="9" />
+</ClassDiagram>
