@@ -2,7 +2,7 @@
  * 
  * GenericActuator.cs defines an abstract class for device API in AERS framework.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

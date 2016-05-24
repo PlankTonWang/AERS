@@ -2,7 +2,7 @@
  * 
  * RuleEngine.cs defines a class to determine what actions to do for iGaDs.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

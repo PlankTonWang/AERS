@@ -2,7 +2,7 @@
  * 
  * BaseAlertInfo.cs defines a class for CAP API in AERS framework.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

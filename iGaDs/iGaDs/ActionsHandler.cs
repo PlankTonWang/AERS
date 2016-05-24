@@ -2,7 +2,7 @@
  * 
  * ActionsHandler.cs defines an abstract class to handle actions for a RuleEngine.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

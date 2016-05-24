@@ -2,7 +2,7 @@
  * 
  * LocationFilter.cs defines a class to filter the locations of iGaDs.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

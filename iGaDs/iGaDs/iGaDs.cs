@@ -2,7 +2,7 @@
  * 
  * iGaDs.cs defines a class inheriting GenericDevice for iGaDs API.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

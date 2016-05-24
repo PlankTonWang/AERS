@@ -2,7 +2,7 @@
  * 
  * UniversalParser.cs defines a class to parse Xml for iGaDs.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

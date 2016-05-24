@@ -2,7 +2,7 @@
  * 
  * SemanticTable.cs defines a class for configuration of iGaDs API in AERS framework.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 

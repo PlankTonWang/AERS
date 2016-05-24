@@ -2,7 +2,7 @@
  * 
  * IBasicDataCollection.cs defines an interface for AERS framework.
  * 
- * Copyright (c) 2016 : None
+ * Copyright (c) 2016 OpenISDM
  * 
  * Project Name:
  * 
