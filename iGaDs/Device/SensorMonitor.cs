@@ -41,12 +41,17 @@
  */
 
 using System;
+using System.Collections.Generic;
 
 namespace AERS.Device
 {
 
     public class SensorMonitor
     {
+
+        // This property stores the sensors integrated with this SensorMonitor.
+        // These sensors will be used in MonitorSensor method.
+        public IEnumerable<GenericSensor> Sensors { get; set; }
 
         // Public constructor.
         public SensorMonitor()

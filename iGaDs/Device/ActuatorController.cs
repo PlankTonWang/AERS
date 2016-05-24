@@ -41,12 +41,17 @@
  */
 
 using System;
+using System.Collections.Generic;
 
 namespace AERS.Device
 {
 
     public class ActuatorController
     {
+
+        // This property stores the actuators integrated with this ActuatorController.
+        // These actuators will be used in ControlActuator method.
+        public IEnumerable<GenericActuator> Actuators { get; set; }
 
         // Public constructor.
         public ActuatorController()

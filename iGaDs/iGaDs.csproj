@@ -60,7 +60,7 @@
     <Compile Include="iGaDs\Configuration\RuleTable.cs" />
     <Compile Include="Device\GenericDevice.cs" />
     <Compile Include="IBasicDataCollection.cs" />
-    <Compile Include="IBasicXMLLoader.cs" />
+    <Compile Include="IBasicXmlLoader.cs" />
     <Compile Include="iGaDs\iGaDs.cs" />
     <Compile Include="Device\GenericActuator.cs" />
     <Compile Include="Device\GenericSensor.cs" />
