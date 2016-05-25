@@ -55,7 +55,7 @@ namespace AERS.iGaDs
         // Public constructor. It initializes the RuleTables with the given parameter.
         public RuleEngine(IEnumerable<RuleTable> ruleTables)
         {
-            RuleTables = ruleTables;
+            this.RuleTables = ruleTables;
         }
 
         

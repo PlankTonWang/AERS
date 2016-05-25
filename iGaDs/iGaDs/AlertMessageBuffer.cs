@@ -72,7 +72,7 @@ namespace AERS.iGaDs
         // Public constructor. It initializes Size with the given parameter.
         public AlertMessageBuffer(int size)
         {
-            Size = size;
+            this.Size = size;
         }
 
         // Implements this method for adding the given message to the container. 

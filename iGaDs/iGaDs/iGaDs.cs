@@ -81,23 +81,23 @@ namespace AERS.iGaDs
         // Public constructor. It initializes all the properties to default setting.
         public iGaDs() : base()
         {
-            DeviceType = "iGaDs";
+            this.DeviceType = "iGaDs";
 
-            RuleTables = null;
-            LocationInfo = null;
-            Profile = null;
+            this.RuleTables = null;
+            this.LocationInfo = null;
+            this.Profile = null;
 
-            AlertMessageBuffer = null;
-            UniversalParser = null;
-            LocationFilter = null;
-            RuleEngine = null;
+            this.AlertMessageBuffer = null;
+            this.UniversalParser = null;
+            this.LocationFilter = null;
+            this.RuleEngine = null;
 
-            ActionsHandler = null;
-            SensorMonitor = null;
-            ActuatorController = null;
+            this.ActionsHandler = null;
+            this.SensorMonitor = null;
+            this.ActuatorController = null;
 
-            Sensors = null;
-            Actuators = null;
+            this.Sensors = null;
+            this.Actuators = null;
         }
 
         // This method initializes the iGaDs, then it becomes available to work. 

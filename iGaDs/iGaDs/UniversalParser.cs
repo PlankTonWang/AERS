@@ -56,7 +56,7 @@ namespace AERS.iGaDs
         // Public constructor. It sets the Profile with the given parameter.
         public UniversalParser(Profile profile)
         {
-            Profile = profile;
+            this.Profile = profile;
         }
 
         // This method parses the given alerting message into an Alert and returns the Alert.

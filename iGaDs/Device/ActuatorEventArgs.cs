@@ -71,19 +71,19 @@ namespace AERS.Device
         // It will initialize the properties with the given three parameters.
         public ActuatorEventArgs(string actuatorType, List<short> actuatorIDs, string command)
         {
-            ActuatorType = actuatorType;
-            ActuatorIDs = actuatorIDs;
-            Command = command;
+            this.ActuatorType = actuatorType;
+            this.ActuatorIDs = actuatorIDs;
+            this.Command = command;
         }
 
         // Public constructor.
         // It will initialize the properties with the given four parameters.
         public ActuatorEventArgs(string actuatorType, List<short> actuatorIDs, string command, T additionalValue)
         {
-            ActuatorType = actuatorType;
-            ActuatorIDs = actuatorIDs;
-            Command = command;
-            AdditionalValue = additionalValue;
+            this.ActuatorType = actuatorType;
+            this.ActuatorIDs = actuatorIDs;
+            this.Command = command;
+            this.AdditionalValue = additionalValue;
         }
 
     }

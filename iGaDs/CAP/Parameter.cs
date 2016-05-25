@@ -53,8 +53,8 @@ namespace AERS.CAP
         // Public constructor with two input to initialize the properties.
         public Parameter( string valueName, string value)
         {
-            ValueName = valueName;
-            Value = value;
+            this.ValueName = valueName;
+            this.Value = value;
         }
 
     }

@@ -61,10 +61,10 @@ namespace AERS
         // It Initializes the LogFilePath and LogFormat and creates a log file.
         public Logger(string logFileName, string logFilePath, string logFormat)
         {
-            LogFileName = logFileName;
-            LogFilePath = logFilePath;
-            LogFormat = logFormat;
-            CreateLogFile();
+            this.LogFileName = logFileName;
+            this.LogFilePath = logFilePath;
+            this.LogFormat = logFormat;
+            this.CreateLogFile();
         }
 
         // This method creates a new log file with LogFileName in the path of LogFilePath.

@@ -71,19 +71,19 @@ namespace AERS.Device
         // It will initialize the properties with the given three parameters.
         public SensorEventArgs(string sensorType, List<short> sensorIDs, string condition)
         {
-            SensorType = sensorType;
-            SensorIDs = sensorIDs;
-            Condition = condition;
+            this.SensorType = sensorType;
+            this.SensorIDs = sensorIDs;
+            this.Condition = condition;
         }
 
         // Public constructor.
         // It will initialize the properties with the given four parameters.
         public SensorEventArgs(string sensorType, List<short> sensorIDs, string condition, T threshold)
         {
-            SensorType = sensorType;
-            SensorIDs = sensorIDs;
-            Condition = condition;
-            Threshold = threshold;
+            this.SensorType = sensorType;
+            this.SensorIDs = sensorIDs;
+            this.Condition = condition;
+            this.Threshold = threshold;
         }
 
     }

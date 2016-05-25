@@ -46,6 +46,7 @@ using System;
 
 namespace AERS.Device
 {
+
     // This enumeration defines the states of a device.
     public enum DeviceState { Uninitialized, Initializing, Idle, Busy, Waiting, Removing, Removed, Errored };
 
@@ -74,11 +75,11 @@ namespace AERS.Device
         // It will initialize all the properties in construction time.
         public GenericDevice()
         {
-            DeviceType = "Unknown";
-            DeviceID = "Unknown";
-            DeviceSerialNumber = "Unknown";
-            DeviceVendor = "Unknown";
-            DeviceState = DeviceState.Uninitialized;
+            this.DeviceType = "Unknown";
+            this.DeviceID = "Unknown";
+            this.DeviceSerialNumber = "Unknown";
+            this.DeviceVendor = "Unknown";
+            this.DeviceState = DeviceState.Uninitialized;
         }
 
         // Implements this method for initializing this device by connecting to the actual device,

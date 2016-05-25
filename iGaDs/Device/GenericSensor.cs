@@ -64,7 +64,7 @@ namespace AERS.Device
         // Public constructor. It Initializes the frequency with the given parameter.
         public GenericSensor(double updateFrequency) : base()
         {
-            UpdateFrequency = updateFrequency;
+            this.UpdateFrequency = updateFrequency;
         }
 
         // Implements this method for starting to read data from an actual sensor,
