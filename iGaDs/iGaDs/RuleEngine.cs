@@ -41,7 +41,7 @@
  */
 
 using System.Collections.Generic;
-using AERS.CAP;
+using AERS.Alert.CAP;
 using AERS.iGaDs.Configuration;
 
 namespace AERS.iGaDs
@@ -68,7 +68,7 @@ namespace AERS.iGaDs
         // This method processes the given Alert with the RuleTables,
         // and determines what actions to do then return the actions.
         // It can be overrided in a derivative class for implementing other rule engines.
-        public virtual IEnumerable<Action> ProcessAlert(Alert alert)
+        public virtual IEnumerable<Action> ProcessAlert(CAPAlert alert)
         {
             IEnumerable<Action> actions = null;
 
@@ -82,7 +82,7 @@ namespace AERS.iGaDs
         // It also references the given isLocated for determining,
         // and the isLocated should be the result of LocationFilter.
         // It can be overrided in a derivative class for implementing other rule engines.
-        public virtual IEnumerable<Action> ProcessAlert(Alert alert, bool isLocated)
+        public virtual IEnumerable<Action> ProcessAlert(CAPAlert alert, bool isLocated)
         {
             IEnumerable<Action> actions = null;
 

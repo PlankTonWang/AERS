@@ -42,17 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alert\2DCoordinate.cs" />
+    <Compile Include="Alert\GenericAffectedArea.cs" />
+    <Compile Include="Alert\GenericAlert.cs" />
+    <Compile Include="Alert\Circle.cs" />
     <Compile Include="iGaDs\Configuration\SemanticTable.cs" />
     <Compile Include="iGaDs\ActionsHandler.cs" />
     <Compile Include="Device\ActuatorController.cs" />
     <Compile Include="Device\ActuatorEventArgs.cs" />
     <Compile Include="iGaDs\AlertMessageBuffer.cs" />
-    <Compile Include="CAP\AdditionalAlertInfo.cs" />
-    <Compile Include="CAP\AffectArea.cs" />
-    <Compile Include="CAP\BaseAlertInfo.cs" />
-    <Compile Include="CAP\Alert.cs" />
-    <Compile Include="CAP\Parameter.cs" />
-    <Compile Include="CAP\Resource.cs" />
+    <Compile Include="Alert\CAPAlert\AdditionalAlertInfo.cs" />
+    <Compile Include="Alert\CAPAlert\AffectedArea.cs" />
+    <Compile Include="Alert\CAPAlert\CAPAlert.cs" />
+    <Compile Include="Alert\CAPAlert\Parameter.cs" />
+    <Compile Include="Alert\CAPAlert\Resource.cs" />
     <Compile Include="iGaDs\Configuration\Action.cs" />
     <Compile Include="iGaDs\Configuration\LocationInfo.cs" />
     <Compile Include="iGaDs\Configuration\Profile.cs" />

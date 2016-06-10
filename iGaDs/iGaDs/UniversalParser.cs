@@ -40,7 +40,7 @@
  */
 
 using System;
-using AERS.CAP;
+using AERS.Alert.CAP;
 using AERS.iGaDs.Configuration;
 
 namespace AERS.iGaDs
@@ -63,9 +63,9 @@ namespace AERS.iGaDs
         // It uses the XmlSchema in the Profile for validating the schema of an CAP,
         // and uses the SemanticTable in the Profile for translating the semantic in the CAP.
         // It can be overrided in a derivative class for parsing other kinds of message.
-        public virtual Alert Parse(string CAP)
+        public virtual CAPAlert Parse(string CAP)
         {
-            Alert result = null;
+            CAPAlert result = null;
 
             // To-do
 

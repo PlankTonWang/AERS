@@ -41,7 +41,7 @@
  */
 
 using System;
-using AERS.CAP;
+using AERS.Alert.CAP;
 using AERS.iGaDs.Configuration;
 
 namespace AERS.iGaDs
@@ -62,7 +62,7 @@ namespace AERS.iGaDs
         // An area may usually described as a polygon, and a location may usually described as a coordinate, 
         // thus this method can be overrided by different algorithms of PIP problem in a derivative class.
         // (Note: PIP = Point in polygon, reference: https://en.wikipedia.org/wiki/Point_in_polygon) 
-        public virtual bool IsInsideAffectedArea(AffectArea affectArea, LocationInfo deviceCurrentLocation)
+        public virtual bool IsInsideAffectedArea(AffectedArea affectedArea, LocationInfo deviceCurrentLocation)
         {
             bool isInside = false;
 
