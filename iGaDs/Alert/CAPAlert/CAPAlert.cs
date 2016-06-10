@@ -132,7 +132,7 @@ namespace AERS.Alert.CAP
 
         }
 
-        // This method will be called by an event trigged during the xml validation.
+        // This method will be called by an event triggered during the xml validation.
         private static void ValidationEventHandler(object sender, ValidationEventArgs e)
         {
 

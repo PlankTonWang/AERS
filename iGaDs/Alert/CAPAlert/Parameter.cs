@@ -76,6 +76,22 @@ namespace AERS.Alert.CAP
 
         }
 
+        // Defines the '==' operator between two Parameters.
+        public static bool operator ==(Parameter p1, Parameter p2)
+        {
+
+            return ((p1.ValueName == p2.ValueName) && (p1.Value == p2.Value));
+
+        }
+
+        // Defines the '!=' operator between two Parameters.
+        public static bool operator !=(Parameter p1, Parameter p2)
+        {
+
+            return ((p1.ValueName != p2.ValueName) || (p1.Value != p2.Value));
+
+        }
+
     }
 
 }
