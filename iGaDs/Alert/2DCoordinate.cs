@@ -18,7 +18,8 @@
 * 
 * Abstract:
 * 
-* 		_2DCoordinate class is a data structure for storing a geo coordinate.
+* 		_2DCoordinate class is a data structure for storing a 2D geo coordinate,
+*       that consists of latitude and longitude.
 * 
 * Authors:
 * 

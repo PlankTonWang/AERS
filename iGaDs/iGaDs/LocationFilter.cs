@@ -65,7 +65,7 @@ namespace AERS.iGaDs
 
         private short deviceCurrentFloor;
 
-        private Parameter deviceCurrentGeocode;
+        private Value deviceCurrentGeocode;
 
         // Public constructor.
         public LocationFilter()
@@ -98,12 +98,12 @@ namespace AERS.iGaDs
             bool resultOfPolygons = false;
             bool resultOfHightRange = false;
 
-            deviceCurrentLatitude = deviceCurrentLocation.Latitude;
-            deviceCurrentLongitude = deviceCurrentLocation.Longitude;
-            deviceCurrentAltitude = deviceCurrentLocation.Altitude;
-            deviceCurrentCeiling = deviceCurrentLocation.Ceiling;
-            deviceCurrentFloor = deviceCurrentLocation.Floor;
-            deviceCurrentGeocode = deviceCurrentLocation.Geocode;
+            this.deviceCurrentLatitude = deviceCurrentLocation.Latitude;
+            this.deviceCurrentLongitude = deviceCurrentLocation.Longitude;
+            this.deviceCurrentAltitude = deviceCurrentLocation.Altitude;
+            this.deviceCurrentCeiling = deviceCurrentLocation.Ceiling;
+            this.deviceCurrentFloor = deviceCurrentLocation.Floor;
+            this.deviceCurrentGeocode = deviceCurrentLocation.Geocode;
 
             // Determines the Geocodes.
             resultOfGeocodeAreas = isInsideGeocodeArea(affectedArea.AreaGeocodes);
@@ -148,17 +148,17 @@ namespace AERS.iGaDs
 
         }
 
-        private bool isInsideGeocodeArea(List<Parameter> geocodes)
+        private bool isInsideGeocodeArea(List<Value> geocodes)
         {
 
             // Originally assume the device is not in the given circle.
             bool isInside = false;
 
-            foreach (Parameter geoCode in geocodes)
+            foreach (Value geoCode in geocodes)
             {
 
                 // Found a matched geocode.
-                if (geoCode == deviceCurrentGeocode)
+                if (geoCode == this.deviceCurrentGeocode)
                 {
 
                     isInside = true;
@@ -180,7 +180,7 @@ namespace AERS.iGaDs
             bool isInside = false;
 
             GeoCoordinate centerOfCircle = new GeoCoordinate(circle.Latitude, circle.Longitude);
-            GeoCoordinate centerOfDevice = new GeoCoordinate(deviceCurrentLatitude, deviceCurrentLongitude);
+            GeoCoordinate centerOfDevice = new GeoCoordinate(this.deviceCurrentLatitude, this.deviceCurrentLongitude);
 
             // This method calculates the distance between the two coordinates and returns result in meters.
             double distanceInMeters = centerOfCircle.GetDistanceTo(centerOfDevice);
@@ -202,7 +202,7 @@ namespace AERS.iGaDs
             // Originally assume the device is not in the given circle.
             bool isInside = false;
 
-            // To-do
+            // To-do (Point in Polygon problem)
 
             return isInside;
 
@@ -218,14 +218,14 @@ namespace AERS.iGaDs
             if (altitude > 0.0 && ceiling >= altitude)
             {
 
-                if (deviceCurrentAltitude <= ceiling && deviceCurrentAltitude >= altitude)
+                if (this.deviceCurrentAltitude <= ceiling && this.deviceCurrentAltitude >= altitude)
                 {
 
                     isInside = true;
 
                 }
 
-                if (deviceCurrentCeiling <= ceiling && deviceCurrentCeiling >= altitude)
+                if (this.deviceCurrentCeiling <= ceiling && this.deviceCurrentCeiling >= altitude)
                 {
 
                     isInside = true;
@@ -236,7 +236,7 @@ namespace AERS.iGaDs
             else if (altitude > 0.0)
             {
 
-                if (deviceCurrentAltitude <= altitude && deviceCurrentCeiling >= altitude )
+                if (this.deviceCurrentAltitude <= altitude && this.deviceCurrentCeiling >= altitude )
                 {
 
                     isInside = true;

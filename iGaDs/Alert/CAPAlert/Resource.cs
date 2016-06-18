@@ -62,16 +62,94 @@ namespace AERS.Alert.CAP
 
         public double Digest { get; private set; }
 
+        // This indexer is responsible for setting and getting the value of the given string index.
+        public object this[string propertyName]
+        {
+
+            get
+            {
+
+                object result = null;
+
+                switch (propertyName.ToLower())
+                {
+
+                    case "resourcedesc":
+                        result = this.ResourceDescription;
+                        break;
+                    case "mimetype":
+                        result = this.MediaType;
+                        break;
+                    case "size":
+                        result = this.Size;
+                        break;
+                    case "uri":
+                        result = this.URI;
+                        break;
+                    case "derefuri":
+                        result = this.DereferencedURI;
+                        break;
+                    case "digest":
+                        result = this.Digest;
+                        break;
+                    default:
+
+                        // To-do
+
+                        break;
+
+                }
+
+                return result;
+
+            }
+
+            private set
+            {
+
+                switch (propertyName.ToLower())
+                {
+
+                    case "resourcedesc":
+                        this.ResourceDescription = (string)value;
+                        break;
+                    case "mimetype":
+                        this.MediaType = (string)value;
+                        break;
+                    case "size":
+                        this.Size = Convert.ToDouble(value);
+                        break;
+                    case "uri":
+                        this.URI = new Uri((string)value);
+                        break;
+                    case "derefuri":
+                        this.DereferencedURI = (string)value;
+                        break;
+                    case "digest":
+                        this.Digest = Convert.ToDouble(value);
+                        break;
+                    default:
+
+                        // To-do
+
+                        break;
+
+                }
+
+            }
+
+        }
+
         // Public constructor with one parameter, it loads and parses the given string.
         public Resource(string resourceXmlString)
         {
 
-            ResourceDescription = "";
-            MediaType = "";
-            Size = 0.0;
-            URI = null;
-            DereferencedURI = "";
-            Digest = 0.0;
+            this.ResourceDescription = "";
+            this.MediaType = "";
+            this.Size = 0.0;
+            this.URI = null;
+            this.DereferencedURI = "";
+            this.Digest = 0.0;
 
             LoadResourceFromXml(resourceXmlString);
 
@@ -90,85 +168,11 @@ namespace AERS.Alert.CAP
             foreach (XmlNode xmlNode in childNodesOfRoot)
             {
 
-                SetValueByName(xmlNode.Name, xmlNode.InnerXml);
+                this[xmlNode.Name] = xmlNode.InnerXml;
 
             }
 
-        }
-
-        // Gets the value of the given valueName in object type (boxing).
-        public object GetValueByName(string valueName)
-        {
-
-            object result = null;
-
-            switch (valueName.ToLower())
-            {
-
-                case "resourcedesc":
-                    result = ResourceDescription;
-                    break;
-                case "mimetype":
-                    result = MediaType;
-                    break;
-                case "size":
-                    result = Size;
-                    break;
-                case "uri":
-                    result = URI;
-                    break;
-                case "derefuri":
-                    result = DereferencedURI;
-                    break;
-                case "digest":
-                    result = Digest;
-                    break;
-                default:
-
-                    // To-do
-
-                    break;
-
-            }
-
-            return result;
-
-        }
-
-        // Sets the corresponding property of the given valueName with the given value. 
-        private void SetValueByName(string valueName, string value)
-        {
-
-            switch (valueName.ToLower())
-            {
-
-                case "resourcedesc":
-                    ResourceDescription = value;
-                    break;
-                case "mimetype":
-                    MediaType = value;
-                    break;
-                case "size":
-                    Size = Convert.ToDouble(value);
-                    break;
-                case "uri":
-                    URI = new Uri(value);
-                    break;
-                case "derefuri":
-                    DereferencedURI = value;
-                    break;
-                case "digest":
-                    Digest = Convert.ToDouble(value);
-                    break;
-                default:
-
-                    // To-do
-
-                    break;
-
-            }
-            
-        }
+        }    
 
     }
 

@@ -1,6 +1,6 @@
 ﻿/**
 * 
-* Parameter.cs defines a struct for CAPAlert library in AERS framework.
+* Value.cs defines a struct for CAPAlert library in AERS framework.
 * 
 * Copyright (c) 2016 OpenISDM
 * 
@@ -14,11 +14,11 @@
 * 
 * File Name:
 * 
-* 		Parameter.cs
+* 		Value.cs
 * 
 * Abstract:
 * 
-* 		Parameter class designed to store some valueName-value structure elements of an CAP,
+* 		Value class designed to store some valueName-value structure elements of an CAP,
 * 		and it usually used in all the classes of CAPAlert library.
 * 
 * Authors:
@@ -44,17 +44,17 @@ using System.Xml;
 namespace AERS.Alert.CAP
 {
 
-    public class Parameter
+    public class Value
     {
 
         // This property stores the value name of a parameter.
-        public string ValueName {  get; private set; }
+        public string valueName {  get; private set; }
 
         // This property stores the value of a parameter.
-        public string Value {  get; private set; }
+        public string value {  get; private set; }
 
         // Public constructor with one parameter, it loads and parses the given string.
-        public Parameter( string parameterXmlString )
+        public Value( string parameterXmlString )
         {
 
             LoadParameterFromXml(parameterXmlString);
@@ -71,24 +71,24 @@ namespace AERS.Alert.CAP
             XmlNode root = xmlDocument.DocumentElement;
             XmlNodeList childNodesOfRoot = root.ChildNodes;
 
-            ValueName = childNodesOfRoot[0].InnerXml;
-            Value = childNodesOfRoot[1].InnerXml;
+            this.valueName = childNodesOfRoot[0].InnerXml;
+            this.value = childNodesOfRoot[1].InnerXml;
 
         }
 
         // Defines the '==' operator between two Parameters.
-        public static bool operator ==(Parameter p1, Parameter p2)
+        public static bool operator ==(Value p1, Value p2)
         {
 
-            return ((p1.ValueName == p2.ValueName) && (p1.Value == p2.Value));
+            return ((p1.valueName == p2.valueName) && (p1.value == p2.value));
 
         }
 
         // Defines the '!=' operator between two Parameters.
-        public static bool operator !=(Parameter p1, Parameter p2)
+        public static bool operator !=(Value p1, Value p2)
         {
 
-            return ((p1.ValueName != p2.ValueName) || (p1.Value != p2.Value));
+            return ((p1.valueName != p2.valueName) || (p1.value != p2.value));
 
         }
 

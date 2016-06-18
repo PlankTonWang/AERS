@@ -58,6 +58,113 @@ namespace AERS.Alert.CAP
 
         private AdditionalAlertInfo currentAdditionalAlertInfo;
 
+        // This indexer is responsible for setting and getting the value of the given string index. 
+        public override object this[string propertyName]
+        {
+
+            get
+            {
+
+                object result = null;
+
+                switch (propertyName.ToLower())
+                {
+
+                    case "identifier":
+                        result = this.MessageID;
+                        break;
+                    case "sender":
+                        result = this.SenderID;
+                        break;
+                    case "sent":
+                        result = this.SendTime;
+                        break;
+                    case "status":
+                        result = this.MessageStatus;
+                        break;
+                    case "msgtype":
+                        result = this.MessageTpye;
+                        break;
+                    case "scope":
+                        result = this.Scope;
+                        break;
+                    case "event":
+                        result = this.EventType;
+                        break;
+                    case "urgency":
+                        result = this.Urgency;
+                        break;
+                    case "severity":
+                        result = this.Severity;
+                        break;
+                    case "certainty":
+                        result = this.Certainty;
+                        break;
+                    case "area":
+                        result = this.AffectedAreas;
+                        break;
+                    case "additionalalertinfos":
+                        result = this.AdditionalAlertInfos;
+                        break;
+                    default:
+                        result = this.AdditionalAlertInfos[0][propertyName];
+                        break;
+
+                }
+
+                return result;
+
+            }
+
+            protected set
+            {
+
+                switch (propertyName.ToLower())
+                {
+
+                    case "identifier":
+                        this.MessageID = (string)value;
+                        break;
+                    case "sender":
+                        this.SenderID = (string)value;
+                        break;
+                    case "sent":
+                        this.SendTime = Convert.ToDateTime((string)value);
+                        break;
+                    case "status":
+                        this.MessageStatus = (string)value;
+                        break;
+                    case "msgtype":
+                        this.MessageTpye = (string)value;
+                        break;
+                    case "scope":
+                        this.Scope = (string)value;
+                        break;
+                    case "event":
+                        this.EventType = (string)value;
+                        break;
+                    case "urgency":
+                        this.Urgency = (string)value;
+                        break;
+                    case "severity":
+                        this.Severity = (string)value;
+                        break;
+                    case "certainty":
+                        this.Certainty = (string)value;
+                        break;
+                    case "area":
+                        ((List<AffectedArea>)this.AffectedAreas).Add(new AffectedArea("<area>" + (string)value + "</area>"));
+                        break;
+                    default:
+                        this.currentAdditionalAlertInfo[propertyName] = (string)value;
+                        break;
+
+                }
+
+            }
+
+        }
+
         // Public constructor with two parameters, it loads and parses the given CAP stream.
         // The second parameter is an xml schema for validating the given CAP before parsing.
         public CAPAlert(MemoryStream CAPStream, XmlSchema capXmlSchema)
@@ -88,7 +195,7 @@ namespace AERS.Alert.CAP
 
             // Sets a xml reader setting with the CAP schema.
             XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();
-            xmlReaderSettings.Schemas.Add(capXmlSchema);
+            xmlReaderSettings.Schemas.Add(this.capXmlSchema);
             xmlReaderSettings.ValidationType = ValidationType.Schema;
 
             // Loads the CAP from the given memory stream.
@@ -106,7 +213,7 @@ namespace AERS.Alert.CAP
             XmlNodeList childNodesOfRoot = root.ChildNodes;
 
             // Sets each property with the content of the CAP.
-            currentAdditionalAlertInfo = new AdditionalAlertInfo();
+            this.currentAdditionalAlertInfo = new AdditionalAlertInfo();
             foreach (XmlNode xmlNode in childNodesOfRoot)
             {
                 
@@ -116,16 +223,20 @@ namespace AERS.Alert.CAP
                     XmlNodeList childNodesOfInfo = xmlNode.ChildNodes;
                     foreach (XmlNode infoNode in childNodesOfInfo)
                     {
-                        SetValueByName(infoNode.Name, infoNode.InnerXml);
+                        // SetValueByName(infoNode.Name, infoNode.InnerXml);
+                        this[infoNode.Name] = infoNode.InnerXml;
                     }
 
-                    AdditionalAlertInfos.Add(currentAdditionalAlertInfo);
-                    currentAdditionalAlertInfo = new AdditionalAlertInfo();
+                    this.AdditionalAlertInfos.Add(this.currentAdditionalAlertInfo);
+                    this.currentAdditionalAlertInfo = new AdditionalAlertInfo();
 
                 }
                 else
                 {
-                    SetValueByName(xmlNode.Name, xmlNode.InnerXml);
+
+                    // SetValueByName(xmlNode.Name, xmlNode.InnerXml);
+                    this[xmlNode.Name] = xmlNode.InnerXml;
+
                 }   
 
             }
@@ -157,109 +268,9 @@ namespace AERS.Alert.CAP
 
             }
 
-        }
-
-        // Gets the value of the given valueName in object type (boxing).
-        public override object GetValueByName(string valueName)
-        {
-
-            object result = null;
-
-            switch (valueName.ToLower())
-            {
-
-                case "identifier":
-                    result = MessageID;
-                    break;
-                case "sender":
-                    result = SenderID;
-                    break;
-                case "sent":
-                    result = SendTime;
-                    break;
-                case "status":
-                    result = MessageStatus;
-                    break;
-                case "msgtype":
-                    result = MessageTpye;
-                    break;
-                case "scope":
-                    result = Scope;
-                    break;
-                case "event":
-                    result = EventType;
-                    break;
-                case "urgency":
-                    result = Urgency;
-                    break;
-                case "severity":
-                    result = Severity;
-                    break;
-                case "certainty":
-                    result = Certainty;
-                    break;
-                case "area":
-                    result = AffectedAreas;
-                    break;
-                default:
-                    result = AdditionalAlertInfos[0].GetValueByName(valueName);
-                    break;
-
-            }
-
-            return result;
-
-        }
-
-        // Sets the corresponding property of the given valueName with the given value. 
-        protected override void SetValueByName(string valueName, string value)
-        {
-
-            switch (valueName.ToLower())
-            {
-
-                case "identifier":
-                    MessageID = value;
-                    break;
-                case "sender":
-                    SenderID = value;
-                    break;
-                case "sent":
-                    SendTime = Convert.ToDateTime(value);
-                    break;
-                case "status":
-                    MessageStatus = value;
-                    break;
-                case "msgtype":
-                    MessageTpye = value;
-                    break;
-                case "scope":
-                    Scope = value;
-                    break;
-                case "event":
-                    EventType = value;
-                    break;
-                case "urgency":
-                    Urgency = value;
-                    break;
-                case "severity":
-                    Severity = value;
-                    break;
-                case "certainty":
-                    Certainty = value;
-                    break;
-                case "area":
-                    ((List<AffectedArea>)AffectedAreas).Add(new AffectedArea("<area>" + value + "</area>"));
-                    break;
-                default:
-                    currentAdditionalAlertInfo.AddValueWithName(valueName, value);
-                    break;
-
-            }
-
-
-        }
+        }  
 
     }
 
 }
+

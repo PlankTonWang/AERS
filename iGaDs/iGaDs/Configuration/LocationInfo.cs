@@ -63,7 +63,7 @@ namespace AERS.iGaDs.Configuration
         public short Floor { get; set; }
 
         // This property stores an Geocode.
-        public Parameter Geocode { get; set; }
+        public Value Geocode { get; set; }
         
         // Public constructor.
         public LocationInfo()

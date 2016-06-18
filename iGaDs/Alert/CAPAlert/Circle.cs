@@ -1,6 +1,6 @@
 ﻿/**
 * 
-* Circle.cs defines a class for Alert library in AERS framework.
+* Circle.cs defines a class for CAPAlert library in AERS framework.
 * 
 * Copyright (c) 2016 OpenISDM
 * 
@@ -39,7 +39,7 @@
 *     .NET Framework 4.5.2
 */
 
-namespace AERS.Alert
+namespace AERS.Alert.CAP
 {
 
     public class Circle : _2DCoordinate
@@ -52,7 +52,7 @@ namespace AERS.Alert
         public Circle(double latitude, double longitude, double radius) : base(latitude, longitude)
         {
 
-            Radius = radius;
+            this.Radius = radius;
 
         }
 

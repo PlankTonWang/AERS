@@ -40,6 +40,7 @@
 */
 
 using System.Collections.Generic;
+using System;
 
 namespace AERS.Alert.CAP
 {
@@ -52,109 +53,120 @@ namespace AERS.Alert.CAP
         // e.g. <language>en-US</language> will be used language as the key and en-US as the value.
         private Dictionary<string, object> additionalAlertInfo;
 
+        // This indexer is responsible for setting and getting the value of the given string index.
+        public object this[string propertyName]
+        {
+
+            get
+            {
+
+                object result = null;
+
+                this.additionalAlertInfo.TryGetValue(propertyName, out result);
+
+                return result;
+
+            }
+
+            set
+            {
+
+                switch (propertyName.ToLower())
+                {
+
+                    // Multiple instances are permitted.
+                    case "code":
+                        if (!this.additionalAlertInfo.ContainsKey("code"))
+                        {
+
+                            this.additionalAlertInfo.Add("code", new List<string>());
+                        }
+
+                        ((List<string>)this.additionalAlertInfo["code"]).Add((string)value);
+                        break;
+
+                    // Multiple instances are permitted.
+                    case "category":
+                        if (!this.additionalAlertInfo.ContainsKey("category"))
+                        {
+
+                            this.additionalAlertInfo.Add("category", new List<string>());
+                        }
+
+                        ((List<string>)this.additionalAlertInfo["category"]).Add((string)value);
+                        break;
+
+                    // Multiple instances are permitted.
+                    case "responsetypes":
+                        if (!this.additionalAlertInfo.ContainsKey("responsetypes"))
+                        {
+
+                            this.additionalAlertInfo.Add("responsetypes", new List<string>());
+                        }
+
+                        ((List<string>)this.additionalAlertInfo["responsetypes"]).Add((string)value);
+                        break;
+
+                    // Multiple instances are permitted.
+                    case "eventcode":
+                        if (!this.additionalAlertInfo.ContainsKey("eventcode"))
+                        {
+
+                            this.additionalAlertInfo.Add("eventcode", new List<Value>());
+
+                        }
+
+                        ((List<Value>)this.additionalAlertInfo["eventcode"]).Add(new Value("<eventCode>" + value + "</eventCode>"));
+                        break;
+                    case "effective":
+                        this.additionalAlertInfo.Add(propertyName, Convert.ToDateTime((string)value));
+                        break;
+                    case "onset":
+                        this.additionalAlertInfo.Add(propertyName, Convert.ToDateTime((string)value));
+                        break;
+                    case "expires":
+                        this.additionalAlertInfo.Add(propertyName, Convert.ToDateTime((string)value));
+                        break;
+                    // Multiple instances are permitted.
+                    case "parameter":
+                        if (!this.additionalAlertInfo.ContainsKey("parameter"))
+                        {
+
+                            this.additionalAlertInfo.Add("parameter", new List<Value>());
+
+                        }
+
+                        ((List<Value>)this.additionalAlertInfo["parameter"]).Add(new Value("<parameter>" + value + "</parameter>"));
+                        break;
+
+                    // Multiple instances are permitted.
+                    case "resource":
+                        if (!this.additionalAlertInfo.ContainsKey("resource"))
+                        {
+
+                            this.additionalAlertInfo.Add("resource", new List<Resource>());
+
+                        }
+
+                        ((List<Resource>)this.additionalAlertInfo["resource"]).Add(new Resource("<resource>" + value + "</resource>"));
+                        break;
+
+                    default:
+                        this.additionalAlertInfo.Add(propertyName, value);
+                        break;
+
+                }
+            }
+
+        }
+
         // Public constructor.
         public AdditionalAlertInfo()
         {
 
-            additionalAlertInfo = new Dictionary<string, object>();
+            this.additionalAlertInfo = new Dictionary<string, object>();
 
-        }
-
-        // Gets the value of the given valueName in object type (boxing).
-        public object GetValueByName(string valueName)
-        {
-
-            object result = null;
-
-            additionalAlertInfo.TryGetValue(valueName, out result);
-
-            return result;
-
-        }
-
-        // Adds a data to the additionalAlertInfo collection with the given valueName and value.
-        public void AddValueWithName(string valueName, string value)
-        {
-
-            switch (valueName.ToLower())
-            {
-
-                // Multiple instances are permitted.
-                case "code":
-                    if (!additionalAlertInfo.ContainsKey("code"))
-                    {
-
-                        additionalAlertInfo.Add("code", new List<string>());
-                    }
-
-                    ((List<string>)additionalAlertInfo["code"]).Add(value);
-                    break;
-
-                // Multiple instances are permitted.
-                case "category":
-                    if (!additionalAlertInfo.ContainsKey("category"))
-                    {
-
-                        additionalAlertInfo.Add("category", new List<string>());
-                    }
-
-                    ((List<string>)additionalAlertInfo["category"]).Add(value);
-                    break;
-
-                // Multiple instances are permitted.
-                case "responsetypes":
-                    if (!additionalAlertInfo.ContainsKey("responsetypes"))
-                    {
-
-                        additionalAlertInfo.Add("responsetypes", new List<string>());
-                    }
-
-                    ((List<string>)additionalAlertInfo["responsetypes"]).Add(value);
-                    break;
-
-                // Multiple instances are permitted.
-                case "eventcode":
-                    if (!additionalAlertInfo.ContainsKey("eventcode"))
-                    {
-
-                        additionalAlertInfo.Add("eventcode", new List<Parameter>());
-
-                    }
-
-                    ((List<Parameter>)additionalAlertInfo["eventcode"]).Add(new Parameter("<eventCode>" + value + "</eventCode>"));
-                    break;
-
-                // Multiple instances are permitted.
-                case "parameter":
-                    if (!additionalAlertInfo.ContainsKey("parameter"))
-                    {
-
-                        additionalAlertInfo.Add("parameter", new List<Parameter>());
-
-                    }
-
-                    ((List<Parameter>)additionalAlertInfo["parameter"]).Add(new Parameter("<parameter>" + value + "</parameter>"));
-                    break;
-
-                // Multiple instances are permitted.
-                case "resource":
-                    if (!additionalAlertInfo.ContainsKey("resource"))
-                    {
-
-                        additionalAlertInfo.Add("resource", new List<Resource>());
-
-                    }
-
-                    ((List<Resource>)additionalAlertInfo["resource"]).Add(new Resource("<resource>" + value + "</resource>"));
-                    break;
-
-                default:
-                    additionalAlertInfo.Add(valueName, value);
-                    break;
-            
-            }
-           
-        }
+        }     
 
     }
 

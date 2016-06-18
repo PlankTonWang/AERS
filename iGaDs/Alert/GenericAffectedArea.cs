@@ -40,6 +40,7 @@
 */
 
 using System.Collections.Generic;
+using AERS.Alert.CAP;
 
 namespace AERS.Alert
 {
@@ -55,14 +56,11 @@ namespace AERS.Alert
         // The affected circle of an affected area.
         public IEnumerable<Circle> AreaCircles { get; protected set; }
 
+        // Override this indexer to implement the get, set accessors.
+        public abstract object this[string propertyName] { get; protected set; }
+
         // Override this method to implement loading an AffectedArea from a string.
         protected abstract void LoadAffectedAreaFromXml(string affectedAreaXmlString);
-
-        // Override this method to implement getting the value of a specific property.
-        public abstract object GetValueByName(string valueName);
-
-        // Override this method to implement setting the value of a specific property.
-        protected abstract void SetValueByName(string valueName, string value);
 
     }
 

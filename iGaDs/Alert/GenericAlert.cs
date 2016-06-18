@@ -50,7 +50,7 @@ namespace AERS.Alert
     {
 
         // These properties defined for storing the basic information of an alert.
-        
+
         // The protocol used of this alert.
         public string AlertingProtocol { get; protected set; }
 
@@ -87,14 +87,11 @@ namespace AERS.Alert
         // The affected area of the emergency described in this alert.
         public IEnumerable<GenericAffectedArea> AffectedAreas { get; protected set; }
 
+        // Override this indexer to implement the get, set accessors.
+        public abstract object this[string propertyName] { get; protected set; }
+
         // Override this method to implement loading an alert from a memory stream.
         protected abstract void LoadAlertFromXml(MemoryStream alertStream);
-
-        // Override this method to implement getting the value of a specific property.
-        public abstract object GetValueByName(string valueName);
-
-        // Override this method to implement setting the value of a specific property.
-        protected abstract void SetValueByName(string valueName, string value);
 
     }
 

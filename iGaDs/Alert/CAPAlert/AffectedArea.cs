@@ -52,22 +52,128 @@ namespace AERS.Alert.CAP
         // The public properties for storing affected area information.
         public List<List<_2DCoordinate>> AreaPolygons { get; private set; }
 
-        public List<Parameter> AreaGeocodes { get; private set; }
+        public List<Value> AreaGeocodes { get; private set; }
 
         public double Altitude { get; protected set; }
 
         public double Ceiling { get; protected set; }
 
+        // This indexer is responsible for setting and getting the value of the given string index. 
+        public override object this[string propertyName]
+        {
+
+            get
+            {
+
+                object result = null;
+
+                switch (propertyName.ToLower())
+                {
+
+                    case "areadesc":
+                        result = this.AreaDescription;
+                        break;
+
+                    case "polygon":
+                        result = this.AreaPolygons;
+                        break;
+
+                    case "circle":
+                        result = this.AreaCircles;
+                        break;
+
+                    case "geocode":
+                        result = this.AreaGeocodes;
+                        break;
+
+                    case "altitude":
+                        result = this.Altitude;
+                        break;
+
+                    case "ceiling":
+                        result = this.Ceiling;
+                        break;
+                    default:
+
+                        // To-do
+
+                        break;
+
+                }
+
+                return result;
+
+            }
+
+            protected set
+            {
+
+                switch (propertyName.ToLower())
+                {
+
+                    case "areadesc":
+                        this.AreaDescription = (string)value;
+                        break;
+
+                    case "polygon":
+                        string[] coordinates = ((string)value).Split(' ');
+                        List<_2DCoordinate> AreaPolygon = new List<_2DCoordinate>();
+                        double latitude = 0.0;
+                        double longitue = 0.0;
+
+                        foreach (string coordinate in coordinates)
+                        {
+
+                            latitude = Convert.ToDouble(coordinate.Split(',')[0]);
+                            longitue = Convert.ToDouble(coordinate.Split(',')[1]);
+                            AreaPolygon.Add(new _2DCoordinate(latitude, longitue));
+
+                        }
+                        this.AreaPolygons.Add(AreaPolygon);
+                        break;
+
+                    case "circle":
+                        string[] circle = ((string)value).Split(' ');
+                        latitude = Convert.ToDouble(circle[0].Split(',')[0]);
+                        longitue = Convert.ToDouble(circle[0].Split(',')[1]);
+                        double radius = Convert.ToDouble(circle[1]);
+                        ((List<Circle>)this.AreaCircles).Add(new Circle(latitude, longitue, radius));
+                        break;
+
+                    case "geocode":
+                        this.AreaGeocodes.Add(new Value("<geocode>" + value + "</geocode>"));
+                        break;
+
+                    case "altitude":
+                        this.Altitude = Convert.ToDouble(value);
+                        break;
+
+                    case "ceiling":
+                        this.Ceiling = Convert.ToDouble(value);
+                        break;
+
+                    default:
+
+                        // To-do
+
+                        break;
+
+                }
+
+            }
+
+        }
+
         // Public constructor with one parameter, it loads and parses the given string.
         public AffectedArea(string affectedAreaXmlString)
         {
 
-            AreaDescription = "";
-            AreaCircles = new List<Circle>();
-            AreaPolygons = new List<List<_2DCoordinate>>();
-            AreaGeocodes = new List<Parameter>();
-            Altitude = 0.0;
-            Ceiling = 0.0;
+            this.AreaDescription = "";
+            this.AreaCircles = new List<Circle>();
+            this.AreaPolygons = new List<List<_2DCoordinate>>();
+            this.AreaGeocodes = new List<Value>();
+            this.Altitude = 0.0;
+            this.Ceiling = 0.0;
 
             LoadAffectedAreaFromXml(affectedAreaXmlString);
 
@@ -85,113 +191,11 @@ namespace AERS.Alert.CAP
             foreach (XmlNode xmlNode in childNodesOfRoot)
             {
 
-                SetValueByName(xmlNode.Name, xmlNode.InnerXml);
+                this[xmlNode.Name] = xmlNode.InnerXml;
 
             }
 
-        }
-
-        // Gets the value of the given valueName in object type (boxing).
-        public override object GetValueByName(string valueName)
-        {
-
-            object result = null;
-
-            switch (valueName.ToLower())
-            {
-
-                case "areadesc":
-                    result = AreaDescription;
-                    break;
-
-                case "polygon":
-                    result = AreaPolygons;
-                    break;
-
-                case "circle":
-                    result = AreaCircles;
-                    break;
-
-                case "geocode":
-                    result = AreaGeocodes;
-                    break;
-
-                case "altitude":
-                    result = Altitude;
-                    break;
-
-                case "ceiling":
-                    result = Ceiling;
-                    break;
-                default:
-
-                    // To-do
-
-                    break;
-
-            }
-
-            return result;
-
-        }
-
-        // Sets the corresponding property of the given valueName with the given value. 
-        protected override void SetValueByName(string valueName, string value)
-        {
-
-            switch (valueName.ToLower())
-            {
-
-                case "areadesc":
-                    AreaDescription = value;
-                    break;
-
-                case "polygon":
-                    string[] coordinates = value.Split(' ');
-                    List<_2DCoordinate> AreaPolygon = new List<_2DCoordinate>();
-                    double latitude = 0.0;
-                    double longitue = 0.0;
-
-                    foreach (string coordinate in coordinates)
-                    {
-
-                        latitude = Convert.ToDouble(coordinate.Split(',')[0]);
-                        longitue = Convert.ToDouble(coordinate.Split(',')[1]);
-                        AreaPolygon.Add(new _2DCoordinate(latitude, longitue));
-
-                    }
-                    AreaPolygons.Add(AreaPolygon);
-                    break;
-
-                case "circle":
-                    string[] circle = value.Split(' ');
-                    latitude = Convert.ToDouble(circle[0].Split(',')[0]);
-                    longitue = Convert.ToDouble(circle[0].Split(',')[1]);
-                    double radius = Convert.ToDouble(circle[1]);
-                    ((List<Circle>)AreaCircles).Add(new Circle(latitude, longitue, radius));
-                    break;
-
-                case "geocode":
-                    AreaGeocodes.Add(new Parameter("<geocode>" + value + "</geocode>"));
-                    break;
-
-                case "altitude":
-                    Altitude = Convert.ToDouble(value);
-                    break;
-
-                case "ceiling":
-                    Ceiling = Convert.ToDouble(value);
-                    break;
-
-                default:
-
-                    // To-do
-
-                    break;
-
-            }
-
-        }
+        }   
 
     }
 
