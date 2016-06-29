@@ -45,7 +45,7 @@ using System.Collections.Generic;
 namespace AERS.iGaDs.Configuration
 {
 
-    public class Profile : IBasicDataCollection, IBasicXmlLoader
+    public class Profile
     {
 
         // This property stores the name of the profile.
@@ -69,55 +69,7 @@ namespace AERS.iGaDs.Configuration
         {
             // Null constructor.
         }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromFile(string XmlFilePath)
-        {
-            // To-do
-        }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromString(string XmlString)
-        {
-            // To-do
-        }
-
-        // Defined in IBasicDataCollection.cs.
-        public bool SetDataByName(string dataName, object dataValue)
-        {
-            bool isExistingAndSet = true;
-
-            // To-do
-
-            return isExistingAndSet;
-        }
-
-        // Defined in IBasicDataCollection.cs.
-        public object GetDataByName(string dataName)
-        {
-            object dataValue = null;
-
-            // To-do
-
-            return dataValue;
-        }
-
-        // Defined in IBasicDataCollection.cs.
-        public void AddData(string dataName, string dataValue)
-        {
-            // To-do
-        }
-
-        // Defined in IBasicDataCollection.cs.
-        public bool RemoveDataByName(string dataName)
-        {
-            bool isExistingAndRemoved = true;
-
-            // To-do
-
-            return isExistingAndRemoved;
-        }
-
+    
     }
 
 }

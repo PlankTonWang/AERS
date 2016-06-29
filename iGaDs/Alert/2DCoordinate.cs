@@ -18,7 +18,7 @@
 * 
 * Abstract:
 * 
-* 		_2DCoordinate class is a data structure for storing a 2D geo coordinate,
+* 		_2DCoordinate class is a structure for storing a 2D GEO coordinate,
 *       that consists of latitude and longitude.
 * 
 * Authors:
@@ -46,6 +46,7 @@ namespace AERS.Alert
     {
 
         // These properties store latitude and longitude of a coordinate.
+
         public double Latitude { get; private set; }
 
         public double Longitude { get; private set; }

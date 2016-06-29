@@ -18,10 +18,10 @@
 * 
 * Abstract:
 * 
-*       AlertBuffer class defines a buffer for keeping the received messages of an iGaDs,
+*       AlertBuffer class defines a buffer for keeping the received alerts of an iGaDs,
 *       and it defines public methods for manipulating the buffer.
 *
-*       The messages should be FIFO in the buffer. 
+*       The alerts should be FIFO in the buffer. 
 *
 *       The inputted alert should be parsed to an non-string object before it stored.
 *       Here we designed it parses alerts to some alert types derived from GenericAlert.
@@ -58,10 +58,10 @@ namespace AERS.iGaDs
         // The queue stores the alerts for this buffer.
         private Queue<GenericAlert> buffer;
 
-        // This property indicates to wheather this buffer is full or not.
+        // This property indicates to whether this buffer is full or not.
         public bool IsFull { get; protected set; }
 
-        // This property indicates to wheather this buffer is empty or not.
+        // This property indicates to whether this buffer is empty or not.
         public bool IsEmpty { get; protected set; }
 
         // This property indicates to the number of the alerts currently in this buffer.
@@ -127,7 +127,7 @@ namespace AERS.iGaDs
 
         }
 
-        // This private method determines weather the given alert will be ignored.
+        // This private method determines whether the given alert will be ignored.
         private bool toBeIgnored(string alert)
         {
 
@@ -139,7 +139,8 @@ namespace AERS.iGaDs
 
         }
 
-        private bool validateSchema(XmlSchema xmlSchema)
+        // This private method determines whether the schema of the given alert is valid.
+        private bool validateSchema(string alert, XmlSchema xmlSchema)
         {
 
             bool isValid = false;
@@ -150,13 +151,40 @@ namespace AERS.iGaDs
 
         }
 
-        // This event will be triggered when a message is added to this buffer.
-        public event EventHandler MessageAddedEvent;
+        // This method will be called by an event triggered during the xml validation.
+        private void validationEventHandler(object sender, ValidationEventArgs e)
+        {
+
+            switch (e.Severity)
+            {
+
+                // If there is an error occurred.
+                case XmlSeverityType.Error:
+                    Console.WriteLine("Error: {0}", e.Message);
+
+                    // To-do
+
+                    break;
+
+                // If there is a warning occurred.
+                case XmlSeverityType.Warning:
+                    Console.WriteLine("Warning {0}", e.Message);
+
+                    // To-do
+
+                    break;
+
+            }
+
+        }
+
+        // This event will be triggered when an alert is added to this buffer.
+        public event EventHandler AlertAddedEvent;
 
         // This event will be triggered when Length reaches the size of this buffer.
         public event EventHandler BufferFullEvent;
 
-        // This event will be triggered when the last message is removed from this buffer.
+        // This event will be triggered when the last alert is removed from this buffer.
         public event EventHandler BufferEmptyEvent;   
 
     }

@@ -19,7 +19,7 @@
 * Abstract:
 * 
 * 		Circle is a derivative class of _2DCoordinate class.
-*       It is a data structure of a circle with a center and a radius.
+*       It is a structure of a circle with a center and a radius.
 * 
 * Authors:
 * 

@@ -18,8 +18,8 @@
 * 
 * Abstract:
 * 
-* 		GenericAlert class defines some basic properties for alert information,
-*       and abstract methods for loading and manipulating an alert.
+* 		GenericAlert class defines some basic properties for storing alert information,
+*       and abstract methods for parsing and accessing the information of an alert.
 * 
 * Authors:
 * 

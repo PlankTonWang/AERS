@@ -44,7 +44,7 @@ using System.Collections.Generic;
 namespace AERS.iGaDs.Configuration
 {
 
-    public class SemanticTable : IBasicXmlLoader
+    public class SemanticTable
     {
 
         // In this semantic table, these two properties represent the semantic definitions,
@@ -67,18 +67,6 @@ namespace AERS.iGaDs.Configuration
         public SemanticTable()
         {
             // Null constructor.
-        }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromFile(string XmlFilePath)
-        {
-            // To-do
-        }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromString(string XmlString)
-        {
-            // To-do
         }
 
         // This method translate the semantic value of the given semantic name with the original value,

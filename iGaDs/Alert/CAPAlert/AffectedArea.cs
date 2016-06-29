@@ -18,8 +18,8 @@
 * 
 * Abstract:
 * 
-* 		AffectedArea class is a structure for storing the elements in <area> of an Alert.
-* 		and it usually used to be a member element of CAPAlert class.
+* 		AffectedArea class is a structure for storing the elements in <area> of an CAP,
+* 		and it is designed to store the information to the corresponding properties.
 * 
 * Authors:
 * 
@@ -49,7 +49,8 @@ namespace AERS.Alert.CAP
     public class AffectedArea : GenericAffectedArea
     {
 
-        // The public properties for storing affected area information.
+        // These public properties store the information in <area> section of an CAP.
+
         public List<List<_2DCoordinate>> AreaPolygons { get; private set; }
 
         public List<Value> AreaGeocodes { get; private set; }
@@ -59,6 +60,7 @@ namespace AERS.Alert.CAP
         public double Ceiling { get; protected set; }
 
         // This indexer is responsible for setting and getting the value of the given string index. 
+        // It provides an user-friendly interface of accessing the properties. 
         public override object this[string propertyName]
         {
 
@@ -169,7 +171,9 @@ namespace AERS.Alert.CAP
 
                     default:
 
+                        // Prints out the information for the test.
                         Console.WriteLine("Detected an unknown tag: {0}", propertyName);
+
                         // To-do
 
                         break;

@@ -44,7 +44,7 @@ using AERS.Alert.CAP;
 namespace AERS.iGaDs.Configuration
 {
 
-    public class LocationInfo : IBasicXmlLoader
+    public class LocationInfo
     {
 
         // This property stores latitude of an coordinate.
@@ -69,18 +69,6 @@ namespace AERS.iGaDs.Configuration
         public LocationInfo()
         {
             // Null constructor.
-        }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromFile(string XmlFilePath)
-        {
-            // To-do
-        }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromString(string XmlString)
-        {
-            // To-do
         }
 
     }

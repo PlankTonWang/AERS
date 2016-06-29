@@ -18,7 +18,7 @@
 * 
 * Abstract:
 * 
-* 		_3DCoordinate class is a data structure for storing a 3D geo coordinate,
+* 		_3DCoordinate class is a structure for storing a 3D GEO coordinate,
 *       that consists of latitude, longitude and altitude.
 * 
 * Authors:

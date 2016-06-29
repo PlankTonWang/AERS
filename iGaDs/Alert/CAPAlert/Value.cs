@@ -1,6 +1,6 @@
 ﻿/**
 * 
-* Value.cs defines a struct for CAPAlert library in AERS framework.
+* Value.cs defines a class for CAPAlert library in AERS framework.
 * 
 * Copyright (c) 2016 OpenISDM
 * 
@@ -18,8 +18,7 @@
 * 
 * Abstract:
 * 
-* 		Value class designed to store some valueName-value structure elements of an CAP,
-* 		and it usually used in all the classes of CAPAlert library.
+* 		Value class is defined to store some valueName-value structure elements of an CAP.
 * 
 * Authors:
 * 
@@ -47,10 +46,10 @@ namespace AERS.Alert.CAP
     public class Value
     {
 
-        // This property stores the value name of a parameter.
+        // This property stores the value name of a valueName-value structure.
         public string valueName {  get; private set; }
 
-        // This property stores the value of a parameter.
+        // This property stores the value of a valueName-value structure.
         public string value {  get; private set; }
 
         // Public constructor with one parameter, it loads and parses the given XmlNode.
@@ -63,7 +62,7 @@ namespace AERS.Alert.CAP
 
         }
 
-        // Defines the '==' operator between two Parameters.
+        // Defines the '==' operator between two Values.
         public static bool operator ==(Value p1, Value p2)
         {
 
@@ -71,7 +70,7 @@ namespace AERS.Alert.CAP
 
         }
 
-        // Defines the '!=' operator between two Parameters.
+        // Defines the '!=' operator between two Values.
         public static bool operator !=(Value p1, Value p2)
         {
 

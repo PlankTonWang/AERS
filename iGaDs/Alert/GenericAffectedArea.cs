@@ -19,7 +19,6 @@
 * Abstract:
 * 
 * 		GenericAffectedArea class defines some basic properties for recording an affected area,
-*       and abstract methods for loading and manipulating info of an affected area.
 * 
 * Authors:
 * 

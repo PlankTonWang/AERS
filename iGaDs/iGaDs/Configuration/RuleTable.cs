@@ -44,7 +44,7 @@ using System.Collections.Generic;
 namespace AERS.iGaDs.Configuration
 {
 
-    public class RuleTable : IBasicXmlLoader
+    public class RuleTable
     {
 
         // This property stores the name of the rule table.
@@ -65,18 +65,6 @@ namespace AERS.iGaDs.Configuration
         public RuleTable()
         {
             // Null constructor.
-        }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromFile(string XmlFilePath)
-        {
-            // To-do
-        }
-
-        // Defined in IBasicXmlLoader.cs.
-        public void LoadXmlFromString(string XmlString)
-        {
-            // To-do
         }
 
     }

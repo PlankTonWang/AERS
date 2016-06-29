@@ -18,8 +18,8 @@
 * 
 * Abstract:
 * 
-* 		Resource class is a data structure for storing the elements in <resource> of an CAP.
-* 		and it usually used to be a member element of AdditionalAlertInfo class.
+* 		Resource class is a structure for storing the elements in <resource> of an CAP.
+* 		and it is designed to store the information to the corresponding properties.
 * 
 * Authors:
 * 
@@ -47,7 +47,8 @@ namespace AERS.Alert.CAP
     public class Resource
     {
 
-        // The public properties for storing resource information.
+        // These public properties store the information in <resource> section of an CAP.
+
         public string ResourceDescription { get; private set; }
 
         public string MediaType { get; private set; }
@@ -62,6 +63,7 @@ namespace AERS.Alert.CAP
         public double Digest { get; private set; }
 
         // This indexer is responsible for setting and getting the value of the given string index.
+        // It provides an user-friendly interface of accessing the properties. 
         public object this[string propertyName]
         {
 
@@ -129,7 +131,9 @@ namespace AERS.Alert.CAP
                         break;
                     default:
 
+                        // Prints out the information for the test.
                         Console.WriteLine("Detected an unknown tag: {0}", propertyName);
+
                         // To-do
 
                         break;

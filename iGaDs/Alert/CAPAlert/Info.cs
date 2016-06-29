@@ -1,4 +1,45 @@
-﻿using System;
+﻿/**
+* 
+* Info.cs defines a class for CAPAlert library in AERS framework.
+* 
+* Copyright (c) 2016 OpenISDM
+* 
+* Project Name:
+* 
+* 		AERS (Active Emergency Reponse System) framework
+* 
+* Version:
+* 
+* 		1.0
+* 
+* File Name:
+* 
+* 		Info.cs
+* 
+* Abstract:
+* 
+* 		Info class is a structrue for storing the elements in <info> of an CAP alert, 
+* 		and it is designed to store the information to the corresponding properties.
+* 
+* Authors:
+* 
+* 		Gary Wang, garywang5566@gmail.com 20-May-2016
+* 
+* License:
+* 
+* 		GPL 3.0 This file is subject to the terms and conditions defined
+* 		in file 'COPYING.txt', which is part of this source code package.
+* 
+* Major Revisions:
+* 	
+*     None
+*
+* Environment:
+*
+*     .NET Framework 4.5.2
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -7,6 +48,8 @@ namespace AERS.Alert.CAP
 
     public class Info
     {
+
+        // These public properties store the information in <info> section of an CAP.
 
         public string Language { get; private set; }
 
@@ -50,6 +93,8 @@ namespace AERS.Alert.CAP
 
         public List<AffectedArea> AffectedAreas { get; private set; }
 
+        // This indexer is responsible for setting and getting the value of the given string index.
+        // It provides an user-friendly interface of accessing the properties. 
         public object this[string propertyName]
         {
 
@@ -70,7 +115,7 @@ namespace AERS.Alert.CAP
                     case "event":
                         result = this.EventType;
                         break;
-                    case "responsetypes":
+                    case "responsetype":
                         result = this.ResponseTypes;
                         break;
                     case "urgency":
@@ -82,7 +127,7 @@ namespace AERS.Alert.CAP
                     case "certainty":
                         result = this.Certainty;
                         break;
-                    case "audiences":
+                    case "audience":
                         result = this.Audiences;
                         break;
                     case "eventcode":
@@ -115,13 +160,13 @@ namespace AERS.Alert.CAP
                     case "contact":
                         result = this.ContactInfo;
                         break;
-                    case "parameters":
+                    case "parameter":
                         result = this.Parameters;
                         break;
-                    case "resources":
+                    case "resource":
                         result = this.Resources;
                         break;
-                    case "areas":
+                    case "area":
                         result = this.AffectedAreas;
                         break;
                     default:
@@ -237,7 +282,9 @@ namespace AERS.Alert.CAP
 
                     default:
 
+                        // Prints out the information for the test.
                         Console.WriteLine("Detected an unknown tag: {0}", propertyName);
+
                         // To-do
 
                         break;
@@ -248,6 +295,7 @@ namespace AERS.Alert.CAP
 
         }
 
+        // Public constructor.
         public Info()
         {
 

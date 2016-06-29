@@ -18,8 +18,8 @@
 * 
 * Abstract:
 * 
-* 		CAPAlert class is the main data structrue representing an CAP alert (Common Alerting Protocol message), 
-* 		and it is designed to parse and store an CAP alert from a memory stream containing CAP.
+* 		CAPAlert class is the main structrue representing an CAP alert (Common Alerting Protocol message), 
+* 		and it is designed to parse and store an CAP alert from a string alert(message).
 * 
 * Authors:
 * 
@@ -42,7 +42,6 @@
 using System.Xml;
 using System;
 using System.Collections.Generic;
-using System.Xml.Schema;
 
 namespace AERS.Alert.CAP
 {
@@ -70,7 +69,8 @@ namespace AERS.Alert.CAP
 
         public List<Resource> Resources { get; private set; }
 
-        // This indexer is responsible for setting and getting the value of the given string index. 
+        // This indexer is responsible for setting and getting the value of the given string index.
+        // It provides an user-friendly interface of accessing the properties.
         public override object this[string propertyName]
         {
 
@@ -121,7 +121,7 @@ namespace AERS.Alert.CAP
                     case "certainty":
                         result = base.Certainty;
                         break;
-                    case "infos":
+                    case "info":
                         result = this.Infos;
                         break;
                     case "source":
@@ -139,16 +139,16 @@ namespace AERS.Alert.CAP
                     case "note":
                         result = this.Note;
                         break;
-                    case "reference":
-                        result = this.ReferenceIDs;               
+                    case "references":
+                        result = this.ReferenceIDs;
                         break;
                     case "incidents":
                         result = this.IncidentIDs;                        
                         break;
-                    case "areas":
+                    case "area":
                         result = base.AffectedAreas;
                         break;
-                    case "resources":
+                    case "resource":
                         result = this.Resources;
                         break;
                     default:
@@ -267,7 +267,9 @@ namespace AERS.Alert.CAP
 
                     default:
 
+                        // Prints out the information for the test.
                         Console.WriteLine("Detected an unknown tag: {0}", propertyName);
+
                         // To-do
 
                         break;
@@ -396,6 +398,7 @@ namespace AERS.Alert.CAP
             foreach (XmlNode node in childNodes)
             {
 
+                // A <geocode> information is stored by a Value object. 
                 if (node.Name == "geocode")
                 {
                     result[node.Name] = node;
@@ -411,32 +414,7 @@ namespace AERS.Alert.CAP
 
         }
 
-        // This method will be called by an event triggered during the xml validation.
-        private static void validationEventHandler(object sender, ValidationEventArgs e)
-        {
-
-            switch (e.Severity)
-            {
-
-                // If there is an error occurred.
-                case XmlSeverityType.Error:
-                    Console.WriteLine("Error: {0}", e.Message);
-
-                    // To-do
-
-                    break;
-
-                // If there is a warning occurred.
-                case XmlSeverityType.Warning:
-                    Console.WriteLine("Warning {0}", e.Message);
-
-                    // To-do
-
-                    break;
-
-            }
-
-        }  
+        
 
     }
 
