@@ -42,7 +42,6 @@
 using System.Xml;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Xml.Schema;
 
 namespace AERS.Alert.CAP
@@ -52,11 +51,24 @@ namespace AERS.Alert.CAP
     {
 
         // These are properties for storing CAP specific elements.
-        public List<AdditionalAlertInfo> AdditionalAlertInfos { get; private set; }
 
-        private XmlSchema capXmlSchema;
+        public string Source { get; private set; }
 
-        private AdditionalAlertInfo currentAdditionalAlertInfo;
+        public string Restriction { get; private set; }
+
+        public string Address { get; private set; }
+
+        public List<string> HandlingCodes { get; private set; }
+
+        public string Note { get; private set; }
+
+        public List<string> ReferenceIDs { get; private set; }
+
+        public List<string> IncidentIDs { get; private set; }
+       
+        public List<Info> Infos { get; private set; }
+
+        public List<Resource> Resources { get; private set; }
 
         // This indexer is responsible for setting and getting the value of the given string index. 
         public override object this[string propertyName]
@@ -70,44 +82,79 @@ namespace AERS.Alert.CAP
                 switch (propertyName.ToLower())
                 {
 
+                    case "alertingprotocol":
+                        result = base.AlertingProtocol;
+                        break;
+                    case "protocolversion":
+                        result = base.ProtocolVersion;
+                        break;
+                    case "sendertyoe":
+                        result = base.SenderType;
+                        break;
                     case "identifier":
-                        result = this.MessageID;
+                        result = base.MessageID;
                         break;
                     case "sender":
-                        result = this.SenderID;
+                        result = base.SenderID;
                         break;
                     case "sent":
-                        result = this.SendTime;
+                        result = base.SendTime;
                         break;
                     case "status":
-                        result = this.MessageStatus;
+                        result = base.MessageStatus;
                         break;
                     case "msgtype":
-                        result = this.MessageTpye;
+                        result = base.MessageTpye;
                         break;
                     case "scope":
-                        result = this.Scope;
+                        result = base.Scope;
                         break;
                     case "event":
-                        result = this.EventType;
+                        result = base.EventType;
                         break;
                     case "urgency":
-                        result = this.Urgency;
+                        result = base.Urgency;
                         break;
                     case "severity":
-                        result = this.Severity;
+                        result = base.Severity;
                         break;
                     case "certainty":
-                        result = this.Certainty;
+                        result = base.Certainty;
                         break;
-                    case "area":
-                        result = this.AffectedAreas;
+                    case "infos":
+                        result = this.Infos;
                         break;
-                    case "additionalalertinfos":
-                        result = this.AdditionalAlertInfos;
+                    case "source":
+                        result = this.Source;
+                        break;
+                    case "restriction":
+                        result = this.Restriction;
+                        break;
+                    case "address":
+                        result = this.Address;
+                        break;
+                    case "code":
+                        result = this.HandlingCodes;
+                        break;
+                    case "note":
+                        result = this.Note;
+                        break;
+                    case "reference":
+                        result = this.ReferenceIDs;               
+                        break;
+                    case "incidents":
+                        result = this.IncidentIDs;                        
+                        break;
+                    case "areas":
+                        result = base.AffectedAreas;
+                        break;
+                    case "resources":
+                        result = this.Resources;
                         break;
                     default:
-                        result = this.AdditionalAlertInfos[0][propertyName];
+                        
+                        // To-do
+
                         break;
 
                 }
@@ -123,40 +170,106 @@ namespace AERS.Alert.CAP
                 {
 
                     case "identifier":
-                        this.MessageID = (string)value;
+                        base.MessageID = (string)value;
                         break;
                     case "sender":
-                        this.SenderID = (string)value;
+                        base.SenderID = (string)value;
                         break;
                     case "sent":
-                        this.SendTime = Convert.ToDateTime((string)value);
+                        base.SendTime = Convert.ToDateTime((string)value);
                         break;
                     case "status":
-                        this.MessageStatus = (string)value;
+                        base.MessageStatus = (string)value;
                         break;
                     case "msgtype":
-                        this.MessageTpye = (string)value;
+                        base.MessageTpye = (string)value;
                         break;
                     case "scope":
-                        this.Scope = (string)value;
+                        base.Scope = (string)value;
                         break;
                     case "event":
-                        this.EventType = (string)value;
+                        base.EventType = (string)value;
                         break;
                     case "urgency":
-                        this.Urgency = (string)value;
+                        base.Urgency = (string)value;
                         break;
                     case "severity":
-                        this.Severity = (string)value;
+                        base.Severity = (string)value;
                         break;
                     case "certainty":
-                        this.Certainty = (string)value;
+                        base.Certainty = (string)value;
+                        break;                    
+                    case "source":
+                        this.Source = (string)value;
                         break;
+                    case "restriction":
+                        this.Restriction = (string)value;
+                        break;
+                    case "address":
+                        this.Address = (string)value;
+                        break;
+                    case "code":
+                        if (this.HandlingCodes == null)
+                        {
+                            this.HandlingCodes = new List<string>();
+                        }
+
+                        this.HandlingCodes.Add((string)value);
+                        break;
+
+                    case "note":
+                        this.Note = (string)value;
+                        break;
+                    case "references":
+                        this.ReferenceIDs = new List<string>();
+
+                        foreach (string ReferenceID in ((string)value).Split(' '))
+                        {
+                            this.ReferenceIDs.Add(ReferenceID);
+                        }
+                        break;
+
+                    case "incidents":
+                        this.IncidentIDs = new List<string>();
+
+                        foreach (string ReferenceID in ((string)value).Split(' '))
+                        {
+                            this.IncidentIDs.Add(ReferenceID);
+                        }
+                        break;
+
+                    case "info":
+                        if (this.Infos == null)
+                        {
+                            this.Infos = new List<Info>();
+                        }
+
+                        this.Infos.Add((Info)value);
+                        break;
+
                     case "area":
-                        ((List<AffectedArea>)this.AffectedAreas).Add(new AffectedArea("<area>" + (string)value + "</area>"));
+                        if (base.AffectedAreas == null)
+                        {
+                            base.AffectedAreas = new List<AffectedArea>();
+                        }
+
+                        ((List<AffectedArea>)base.AffectedAreas).Add((AffectedArea)value);
                         break;
+
+                    case "resource":
+                        if (this.Resources == null)
+                        {
+                            this.Resources = new List<Resource>();
+                        }
+
+                        this.Resources.Add((Resource)value);
+                        break;
+
                     default:
-                        this.currentAdditionalAlertInfo[propertyName] = (string)value;
+
+                        Console.WriteLine("Detected an unknown tag: {0}", propertyName);
+                        // To-do
+
                         break;
 
                 }
@@ -167,84 +280,139 @@ namespace AERS.Alert.CAP
 
         // Public constructor with two parameters, it loads and parses the given CAP stream.
         // The second parameter is an xml schema for validating the given CAP before parsing.
-        public CAPAlert(MemoryStream CAPStream, XmlSchema capXmlSchema)
+        public CAPAlert(string CAPString)
         {
 
             base.AlertingProtocol = "Common Alerting Protocol";
-            base.MessageID = "";
-            base.SenderID = "";
-            base.SendTime = new DateTime();
-            base.MessageStatus = "";
-            base.MessageTpye = "";
-            base.Scope = "";
-            base.EventType = "";
-            base.Urgency = "";
-            base.Severity = "";
-            base.Certainty = "";
-            base.AffectedAreas = new List<AffectedArea>();
-            this.AdditionalAlertInfos = new List<AdditionalAlertInfo>();
-            this.capXmlSchema = capXmlSchema;
+            base.ProtocolVersion = 1.2;       
+            base.SenderType = "Emergency Agency";
 
-            LoadAlertFromXml(CAPStream);
+            parseAlert(CAPString);
+            Console.WriteLine("Parsed: {0}", this.MessageID);
 
         }
 
-        // This method loads and parses the xml source from the given memory stream.
-        protected override void LoadAlertFromXml(MemoryStream alertStream)
+        // This method parses the <alert> section of an CAP from the given string.
+        protected override void parseAlert(string alertString)
         {
 
-            // Sets a xml reader setting with the CAP schema.
-            XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();
-            xmlReaderSettings.Schemas.Add(this.capXmlSchema);
-            xmlReaderSettings.ValidationType = ValidationType.Schema;
-
-            // Loads the CAP from the given memory stream.
-            XmlReader xmlReader = XmlReader.Create(alertStream, xmlReaderSettings);
+            // Parses the input CAP string to an XmlDocument.
             XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(xmlReader);
+            xmlDocument.LoadXml(alertString);
 
-            // Sets an eventhandler called when the validation of the CAP succeeds.
-            ValidationEventHandler validationEventHandler = new ValidationEventHandler(ValidationEventHandler);
-
-            // Validates the CAP.
-            xmlDocument.Validate(validationEventHandler);
-
+            // Gets the root xml node, the <alert> section.
             XmlNode root = xmlDocument.DocumentElement;
-            XmlNodeList childNodesOfRoot = root.ChildNodes;
+            XmlNodeList childNodes = root.ChildNodes;
 
             // Sets each property with the content of the CAP.
-            this.currentAdditionalAlertInfo = new AdditionalAlertInfo();
-            foreach (XmlNode xmlNode in childNodesOfRoot)
+            foreach (XmlNode node in childNodes)
             {
                 
-                if (xmlNode.Name == "info")
-                {
-
-                    XmlNodeList childNodesOfInfo = xmlNode.ChildNodes;
-                    foreach (XmlNode infoNode in childNodesOfInfo)
-                    {
-                        // SetValueByName(infoNode.Name, infoNode.InnerXml);
-                        this[infoNode.Name] = infoNode.InnerXml;
-                    }
-
-                    this.AdditionalAlertInfos.Add(this.currentAdditionalAlertInfo);
-                    this.currentAdditionalAlertInfo = new AdditionalAlertInfo();
-
+                if (node.Name == "info")
+                {                 
+                    this[node.Name] = parseInfo(node);                   
                 }
                 else
                 {
-
-                    // SetValueByName(xmlNode.Name, xmlNode.InnerXml);
-                    this[xmlNode.Name] = xmlNode.InnerXml;
-
+                    this[node.Name] = node.InnerXml;
                 }   
 
             }
 
+            // Copys the basic information out of the first <info>.
+            base.EventType = Infos[0].EventType;
+            base.Urgency = Infos[0].Urgency;
+            base.Severity = Infos[0].Severity;
+            base.Certainty = Infos[0].Certainty;
+
+        }
+
+        // This method parses a <info> section of an CAP from the given XmlNode.
+        private Info parseInfo(XmlNode info)
+        {
+
+            Info result = new Info();
+            XmlNodeList childNodes = info.ChildNodes;
+
+            foreach (XmlNode node in childNodes)
+            {
+
+                switch (node.Name.ToLower())
+                {
+
+                    case "eventcode":
+                        result[node.Name] = node;
+                        break;
+                    case "parameter":
+                        result[node.Name] = node;
+                        break;
+                    case "resource":
+                        Resource resource = parseResource(node);
+                        result[node.Name] = resource;
+                        this[node.Name] = resource;
+                        break;
+
+                    case "area":
+                        AffectedArea affectedArea = parseAffectedArea(node);
+                        result[node.Name] = affectedArea;
+                        this[node.Name] = affectedArea;
+                        break;
+
+                    default:
+                        result[node.Name] = node.InnerXml;
+                        break;
+
+                }
+
+            }
+
+            return result;
+
+        }
+
+        // This method parses a <resource> section of a <info> from the given XmlNode.
+        private Resource parseResource(XmlNode resource)
+        {
+
+            Resource result = new Resource();
+            XmlNodeList childNodes = resource.ChildNodes;
+
+            foreach (XmlNode node in childNodes)
+            {
+                result[node.Name] = node.InnerXml;
+            }
+
+            return result;
+
+        }
+
+        // This method parses a <area> section of a <info> from the given XmlNode.
+        private AffectedArea parseAffectedArea(XmlNode affectedArea)
+        {
+
+            AffectedArea result = new AffectedArea();
+            XmlNodeList childNodes = affectedArea.ChildNodes;
+
+            foreach (XmlNode node in childNodes)
+            {
+
+                if (node.Name == "geocode")
+                {
+                    result[node.Name] = node;
+                }
+                else
+                {
+                    result[node.Name] = node.InnerXml;
+                }
+
+            }
+
+            return result;
+
         }
 
         // This method will be called by an event triggered during the xml validation.
-        private static void ValidationEventHandler(object sender, ValidationEventArgs e)
+        private static void validationEventHandler(object sender, ValidationEventArgs e)
         {
 
             switch (e.Severity)

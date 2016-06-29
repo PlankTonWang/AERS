@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Alert\2DCoordinate.cs" />
     <Compile Include="Alert\3DCoordinate.cs" />
+    <Compile Include="Alert\CAPAlert\Info.cs" />
     <Compile Include="Alert\GenericAffectedArea.cs" />
     <Compile Include="Alert\GenericAlert.cs" />
     <Compile Include="Alert\CAPAlert\Circle.cs" />
@@ -52,8 +53,7 @@
     <Compile Include="iGaDs\ActionsHandler.cs" />
     <Compile Include="Device\ActuatorController.cs" />
     <Compile Include="Device\ActuatorEventArgs.cs" />
-    <Compile Include="iGaDs\AlertMessageBuffer.cs" />
-    <Compile Include="Alert\CAPAlert\AdditionalAlertInfo.cs" />
+    <Compile Include="iGaDs\AlertBuffer.cs" />
     <Compile Include="Alert\CAPAlert\AffectedArea.cs" />
     <Compile Include="Alert\CAPAlert\CAPAlert.cs" />
     <Compile Include="Alert\CAPAlert\Value.cs" />
@@ -66,7 +66,6 @@
     <Compile Include="Device\GenericDevice.cs" />
     <Compile Include="IBasicDataCollection.cs" />
     <Compile Include="IBasicXmlLoader.cs" />
-    <Compile Include="iGaDs\IAlertParser.cs" />
     <Compile Include="iGaDs\iGaDs.cs" />
     <Compile Include="Device\GenericActuator.cs" />
     <Compile Include="Device\GenericSensor.cs" />
@@ -74,12 +73,8 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="iGaDs\RuleEngine.cs" />
-    <Compile Include="iGaDs\CAPParser.cs" />
     <Compile Include="Device\SensorEventArgs.cs" />
     <Compile Include="Device\SensorMonitor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

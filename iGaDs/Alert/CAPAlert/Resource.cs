@@ -40,7 +40,6 @@
 */
 
 using System;
-using System.Xml;
 
 namespace AERS.Alert.CAP
 {
@@ -104,7 +103,7 @@ namespace AERS.Alert.CAP
 
             }
 
-            private set
+            internal set
             {
 
                 switch (propertyName.ToLower())
@@ -130,6 +129,7 @@ namespace AERS.Alert.CAP
                         break;
                     default:
 
+                        Console.WriteLine("Detected an unknown tag: {0}", propertyName);
                         // To-do
 
                         break;
@@ -140,39 +140,13 @@ namespace AERS.Alert.CAP
 
         }
 
-        // Public constructor with one parameter, it loads and parses the given string.
-        public Resource(string resourceXmlString)
+        // Public constructor.
+        public Resource()
         {
 
-            this.ResourceDescription = "";
-            this.MediaType = "";
-            this.Size = 0.0;
-            this.URI = null;
-            this.DereferencedURI = "";
-            this.Digest = 0.0;
-
-            LoadResourceFromXml(resourceXmlString);
-
+            // Null constructor.
+           
         }
-
-        // This method load the xml source from the given string.
-        private void LoadResourceFromXml(string resourceXmlString)
-        {
-
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.LoadXml(resourceXmlString);
-
-            XmlNode root = xmlDocument.DocumentElement;
-            XmlNodeList childNodesOfRoot = root.ChildNodes;
-
-            foreach (XmlNode xmlNode in childNodesOfRoot)
-            {
-
-                this[xmlNode.Name] = xmlNode.InnerXml;
-
-            }
-
-        }    
 
     }
 

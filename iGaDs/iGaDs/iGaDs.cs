@@ -57,9 +57,7 @@ namespace AERS.iGaDs
 
 
         // These properties stores the core components of this iGaDs.
-        AlertMessageBuffer<object> AlertMessageBuffer { get; set; }
-
-        IAlertParser AlertParser { get; set; }
+        AlertBuffer AlertBuffer { get; set; }
 
         LocationFilter LocationFilter { get; set; }
 
@@ -87,8 +85,7 @@ namespace AERS.iGaDs
             this.LocationInfo = null;
             this.Profile = null;
 
-            this.AlertMessageBuffer = null;
-            this.AlertParser = null;
+            this.AlertBuffer = null;
             this.LocationFilter = null;
             this.RuleEngine = null;
 

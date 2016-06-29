@@ -53,26 +53,13 @@ namespace AERS.Alert.CAP
         // This property stores the value of a parameter.
         public string value {  get; private set; }
 
-        // Public constructor with one parameter, it loads and parses the given string.
-        public Value( string parameterXmlString )
+        // Public constructor with one parameter, it loads and parses the given XmlNode.
+        public Value(XmlNode parameter)
         {
 
-            LoadParameterFromXml(parameterXmlString);
-
-        }
-
-        // This method loads and parses the xml source from the given string.
-        private void LoadParameterFromXml(string parameterXmlString)
-        {
-
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.LoadXml(parameterXmlString);
-
-            XmlNode root = xmlDocument.DocumentElement;
-            XmlNodeList childNodesOfRoot = root.ChildNodes;
-
-            this.valueName = childNodesOfRoot[0].InnerXml;
-            this.value = childNodesOfRoot[1].InnerXml;
+            XmlNodeList childNodes = parameter.ChildNodes;
+            this.valueName = childNodes[0].InnerXml;
+            this.value = childNodes[1].InnerXml;
 
         }
 

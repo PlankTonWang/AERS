@@ -41,7 +41,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace AERS.Alert
 {
@@ -54,8 +53,14 @@ namespace AERS.Alert
         // The protocol used of this alert.
         public string AlertingProtocol { get; protected set; }
 
+        // The protocol version of this alert.
+        public double ProtocolVersion { get; protected set; }
+
         // The message id of this alert.
         public string MessageID { get; protected set; }
+
+        // The sender type of this alert.
+        public string SenderType { get; protected set; }
 
         // The sender id of this alert.
         public string SenderID { get; protected set; }
@@ -90,8 +95,8 @@ namespace AERS.Alert
         // Override this indexer to implement the get, set accessors.
         public abstract object this[string propertyName] { get; protected set; }
 
-        // Override this method to implement loading an alert from a memory stream.
-        protected abstract void LoadAlertFromXml(MemoryStream alertStream);
+        // Override this method to implement parsing an alert from a string.
+        protected abstract void parseAlert(string alert);
 
     }
 

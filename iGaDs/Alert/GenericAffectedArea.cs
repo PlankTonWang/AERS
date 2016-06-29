@@ -57,10 +57,7 @@ namespace AERS.Alert
         public IEnumerable<Circle> AreaCircles { get; protected set; }
 
         // Override this indexer to implement the get, set accessors.
-        public abstract object this[string propertyName] { get; protected set; }
-
-        // Override this method to implement loading an AffectedArea from a string.
-        protected abstract void LoadAffectedAreaFromXml(string affectedAreaXmlString);
+        public abstract object this[string propertyName] { get; internal set; }
 
     }
 
