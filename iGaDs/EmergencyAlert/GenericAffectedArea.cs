@@ -39,23 +39,26 @@
 */
 
 using System.Collections.Generic;
-using AERS.Alert.CAP;
+using AERS.EmergencyAlert.CAP;
 
-namespace AERS.Alert
+namespace AERS.EmergencyAlert
 {
 
     public abstract class GenericAffectedArea
     {
 
-        // These properties defined for storing the basic information of an affected area.
+        // These properties are defined for storing the basic information of an affected area.
 
         // The text description of an affected area.
         public string AreaDescription { get; protected set; }
 
-        // The affected circle of an affected area.
+        // The values of a point and radius delineating the affected area of an emergency alert.
+        // A circle is represented by a Circle object. 
         public IEnumerable<Circle> AreaCircles { get; protected set; }
 
-        // Override this indexer to implement the get, set accessors.
+        // Override this indexer to implement the get, set accessors for accessing the
+        // properties of this affected area by a string index.
+        // e.g., this["areaDesc"] represents the access of AreaDescription property. 
         public abstract object this[string propertyName] { get; internal set; }
 
     }

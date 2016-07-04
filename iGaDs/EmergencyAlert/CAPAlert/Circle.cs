@@ -39,13 +39,13 @@
 *     .NET Framework 4.5.2
 */
 
-namespace AERS.Alert.CAP
+namespace AERS.EmergencyAlert.CAP
 {
 
     public class Circle : _2DCoordinate
     {
 
-        // This property store the radius of a circle.
+        // The radius of a circle.
         public double Radius { get; private set; }
 
         // Public constructor with parameters: latitude, longitude and radius.

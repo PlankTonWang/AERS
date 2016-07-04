@@ -18,7 +18,7 @@
 * 
 * Abstract:
 * 
-* 		Resource class is a structure for storing the elements in <resource> of an CAP.
+* 		Resource class is a structure for storing the elements in <resource> section of an CAP.
 * 		and it is designed to store the information to the corresponding properties.
 * 
 * Authors:
@@ -41,25 +41,31 @@
 
 using System;
 
-namespace AERS.Alert.CAP
+namespace AERS.EmergencyAlert.CAP
 {
 
     public class Resource
     {
 
-        // These public properties store the information in <resource> section of an CAP.
+        // These properties represent the information in <resource> section of an CAP.
+        // A <resource> section describes the resource file of an CAP.
 
+        // The text describing the type and content of the resource file.
         public string ResourceDescription { get; private set; }
 
+        // The identifier of the MIME content type and sub-type describing the resource file.
         public string MediaType { get; private set; }
 
+        // The integer indicating the size of the resource file.
         public double Size { get; private set; }
 
+        // The identifier of the hyperlink for the resource file.
         public Uri URI { get; private set; }
 
-        // DereferencedURI encoded of base64 coding.
-        public string DereferencedURI { get; private set; } 
+        // The base-64 encoded data content of the resource file.
+        public string DereferencedURI { get; private set; }
 
+        // The code representing the digital digest (“hash”) computed from the resource file.
         public double Digest { get; private set; }
 
         // This indexer is responsible for setting and getting the value of the given string index.
@@ -95,7 +101,7 @@ namespace AERS.Alert.CAP
                         break;
                     default:
 
-                        // To-do
+                        // To-do, when the object visitor gets with an unknown string index.
 
                         break;
 
@@ -131,10 +137,7 @@ namespace AERS.Alert.CAP
                         break;
                     default:
 
-                        // Prints out the information for the test.
-                        Console.WriteLine("Detected an unknown tag: {0}", propertyName);
-
-                        // To-do
+                        // To-do, when the object visitor sets with an unknown string index.
 
                         break;
 

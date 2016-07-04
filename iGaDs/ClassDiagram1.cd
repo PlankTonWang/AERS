@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="AERS.Alert._2DCoordinate">
+    <Position X="3.5" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alert\2DCoordinate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert._3DCoordinate">
+    <Position X="0.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alert\3DCoordinate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.GenericAffectedArea">
+    <Position X="11.25" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAACAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alert\GenericAffectedArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.GenericAlert">
+    <Position X="3.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAABEAAAAAiAACACAAAAEAAAAAAAEAQACACQGAgA=</HashCode>
+      <FileName>Alert\GenericAlert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.IndoorCoordinate">
+    <Position X="6" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alert\IndoorCoordinate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.CAP.AffectedArea">
+    <Position X="14.5" Y="6.25" Width="3" />
+    <InheritanceLine Type="AERS.Alert.GenericAffectedArea" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.75" Y="7.438" />
+        <Point X="14.5" Y="7.438" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAACAAAgAAAABAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Alert\CAPAlert\AffectedArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.CAP.CAPAlert">
+    <Position X="7.75" Y="0.5" Width="2.75" />
+    <InheritanceLine Type="AERS.Alert.GenericAlert" FixedFromPoint="true">
+      <Path>
+        <Point X="7.25" Y="2.875" />
+        <Point X="7.75" Y="2.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>BEgAAABAIgAgAIAACAAAAAAAAAAAIAACAACAAAMAAAA=</HashCode>
+      <FileName>Alert\CAPAlert\CAPAlert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.CAP.Circle">
+    <Position X="3.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alert\CAPAlert\Circle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.CAP.Info">
+    <Position X="11.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgEKAAEAAAACAQAAAIEAQAJAAABAJACAKQiAAA=</HashCode>
+      <FileName>Alert\CAPAlert\Info.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.CAP.Resource">
+    <Position X="14.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAgAgACAAAAAAAACAAAAAAAgAAAAAAAAg=</HashCode>
+      <FileName>Alert\CAPAlert\Resource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.Alert.CAP.Value">
+    <Position X="8.25" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAACAAAAAAAAiA=</HashCode>
+      <FileName>Alert\CAPAlert\Value.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AERS.iGaDs.AlertBuffer">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ECBAAAAAAABAgAAAAAAABABAAADAAAAIAABQAAAAAAA=</HashCode>
+      <FileName>iGaDs\AlertBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

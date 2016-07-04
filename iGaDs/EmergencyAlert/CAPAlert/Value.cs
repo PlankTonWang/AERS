@@ -18,7 +18,7 @@
 * 
 * Abstract:
 * 
-* 		Value class is defined to store some valueName-value structure elements of an CAP.
+* 		Value class is defined to store some valueName-value pair elements of an CAP alert.
 * 
 * Authors:
 * 
@@ -40,19 +40,19 @@
 
 using System.Xml;
 
-namespace AERS.Alert.CAP
+namespace AERS.EmergencyAlert.CAP
 {
 
     public class Value
     {
 
-        // This property stores the value name of a valueName-value structure.
+        // The value name of a valueName-value pair.
         public string valueName {  get; private set; }
 
-        // This property stores the value of a valueName-value structure.
+        // The value of a valueName-value pair.
         public string value {  get; private set; }
 
-        // Public constructor with one parameter, it loads and parses the given XmlNode.
+        // Public constructor with one parameter, it parses the given XmlNode.
         public Value(XmlNode parameter)
         {
 

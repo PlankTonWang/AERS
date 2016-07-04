@@ -39,13 +39,13 @@
 *     .NET Framework 4.5.2
 */
 
-namespace AERS.Alert
+namespace AERS.EmergencyAlert
 {
 
     public class IndoorCoordinate : _2DCoordinate
     {
 
-        // This property store the floor of an indoor coordinate.
+        // The floor of an indoor coordinate.
         public short Floor { get; private set; }
 
         // Public constructor with parameters: latitude, longitude and floor.

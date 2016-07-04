@@ -19,7 +19,7 @@
 * Abstract:
 * 
 * 		CAPAlert class is the main structrue representing an CAP alert (Common Alerting Protocol message), 
-* 		and it is designed to parse and store an CAP alert from a string alert(message).
+* 		and it is designed to parse and store an CAP alert from alert(message) XML strings.
 * 
 * Authors:
 * 
@@ -43,30 +43,39 @@ using System.Xml;
 using System;
 using System.Collections.Generic;
 
-namespace AERS.Alert.CAP
+namespace AERS.EmergencyAlert.CAP
 {
 
-    public class CAPAlert : GenericAlert
+    public class CAPAlert : GenericEmergencyAlert
     {
 
-        // These are properties for storing CAP specific elements.
+        // These properties represent the CAP specific elements.
 
+        // The text identifying the source of the CAP alert.
         public string Source { get; private set; }
 
+        // The text describing the rule for limiting distribution of the CAP alert.
         public string Restriction { get; private set; }
 
-        public string Address { get; private set; }
+        // The group listing of intended recipients of the CAP alert.
+        public List<string> Addresses { get; private set; }
 
+        // The code denoting the special handling of the CAP alert.
         public List<string> HandlingCodes { get; private set; }
 
+        // The text describing the purpose or significance of the CAP alert.
         public string Note { get; private set; }
 
+        // The group listing identifying earlier alert(s) referenced by the CAP alert.
         public List<string> ReferenceIDs { get; private set; }
 
+        // The group listing naming the referent incident(s) of the CAP alert.
         public List<string> IncidentIDs { get; private set; }
-       
+
+        // The containers for all component parts of the info sub-elements of the CAP alert.
         public List<Info> Infos { get; private set; }
 
+        // The containers for all component parts of the resource sub-elements of the info sub-elements of the CAP alert.
         public List<Resource> Resources { get; private set; }
 
         // This indexer is responsible for setting and getting the value of the given string index.
@@ -131,7 +140,7 @@ namespace AERS.Alert.CAP
                         result = this.Restriction;
                         break;
                     case "address":
-                        result = this.Address;
+                        result = this.Addresses;
                         break;
                     case "code":
                         result = this.HandlingCodes;
@@ -152,8 +161,8 @@ namespace AERS.Alert.CAP
                         result = this.Resources;
                         break;
                     default:
-                        
-                        // To-do
+
+                        // To-do, when the object visitor gets with an unknown string index.
 
                         break;
 
@@ -206,8 +215,17 @@ namespace AERS.Alert.CAP
                         this.Restriction = (string)value;
                         break;
                     case "address":
-                        this.Address = (string)value;
+                        this.Addresses = new List<string>();
+
+                        foreach (string Address in ((string)value).Split(' '))
+                        {
+                            if (Address != "" && Address != " ")
+                            {
+                                this.Addresses.Add(Address);
+                            }
+                        }
                         break;
+
                     case "code":
                         if (this.HandlingCodes == null)
                         {
@@ -267,10 +285,7 @@ namespace AERS.Alert.CAP
 
                     default:
 
-                        // Prints out the information for the test.
-                        Console.WriteLine("Detected an unknown tag: {0}", propertyName);
-
-                        // To-do
+                        // To-do, when the object visitor sets with an unknown string index.
 
                         break;
 
@@ -280,36 +295,38 @@ namespace AERS.Alert.CAP
 
         }
 
-        // Public constructor with two parameters, it loads and parses the given CAP stream.
-        // The second parameter is an xml schema for validating the given CAP before parsing.
+        // Public constructor with one parameter.
+        // It sets the properties from the information parsing from the given CAP string.
         public CAPAlert(string CAPString)
         {
 
+            // Sets the CAP secified information of this emergency alert.
             base.AlertingProtocol = "Common Alerting Protocol";
             base.ProtocolVersion = 1.2;       
             base.SenderType = "Emergency Agency";
 
+            // Calls the method to start parsing the CAP string.
             parseAlert(CAPString);
-            Console.WriteLine("Parsed: {0}", this.MessageID);
 
         }
 
-        // This method parses the <alert> section of an CAP from the given string.
+        // Parses the <alert> section of an CAP from the given XML string.
         protected override void parseAlert(string alertString)
         {
 
-            // Parses the input CAP string to an XmlDocument.
+            // Parses the input CAP string to an XmlDocument(.NET built-in XML parser).
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(alertString);
 
-            // Gets the root xml node, the <alert> section.
+            // Gets the root node of the XML document, the <alert> section of an CAP.
             XmlNode root = xmlDocument.DocumentElement;
             XmlNodeList childNodes = root.ChildNodes;
 
-            // Sets each property with the content of the CAP.
+            // Sets each property with the content of the CAP by iteratively visiting each XML node.
             foreach (XmlNode node in childNodes)
             {
-                
+
+                // Recursively visits and parses subsections of an CAP.
                 if (node.Name == "info")
                 {                 
                     this[node.Name] = parseInfo(node);                   
@@ -321,7 +338,9 @@ namespace AERS.Alert.CAP
 
             }
 
-            // Copys the basic information out of the first <info>.
+            // Copys the basic information out of the first <info> of an CAP to the properties.
+            // These information are regarded as the basic informations of an emergency alert.
+            // Thus they shall be easily accessed in an emergency alert class.
             base.EventType = Infos[0].EventType;
             base.Urgency = Infos[0].Urgency;
             base.Severity = Infos[0].Severity;
@@ -329,7 +348,7 @@ namespace AERS.Alert.CAP
 
         }
 
-        // This method parses a <info> section of an CAP from the given XmlNode.
+        // Parses an <info> section of an CAP from the given XmlNode.
         private Info parseInfo(XmlNode info)
         {
 
@@ -339,6 +358,8 @@ namespace AERS.Alert.CAP
             foreach (XmlNode node in childNodes)
             {
 
+                // Parses the special cases of an <info> section.
+                // Each of them is parsed into a specific object other than a string.
                 switch (node.Name.ToLower())
                 {
 
@@ -372,7 +393,7 @@ namespace AERS.Alert.CAP
 
         }
 
-        // This method parses a <resource> section of a <info> from the given XmlNode.
+        // Parses a <resource> section of an <info> section from the given XmlNode.
         private Resource parseResource(XmlNode resource)
         {
 
@@ -388,7 +409,7 @@ namespace AERS.Alert.CAP
 
         }
 
-        // This method parses a <area> section of a <info> from the given XmlNode.
+        // Parses an <area> section of an <info> section from the given XmlNode.
         private AffectedArea parseAffectedArea(XmlNode affectedArea)
         {
 
@@ -398,7 +419,7 @@ namespace AERS.Alert.CAP
             foreach (XmlNode node in childNodes)
             {
 
-                // A <geocode> information is stored by a Value object. 
+                // The special case of an <area> section.
                 if (node.Name == "geocode")
                 {
                     result[node.Name] = node;
@@ -413,8 +434,6 @@ namespace AERS.Alert.CAP
             return result;
 
         }
-
-        
 
     }
 

@@ -39,13 +39,13 @@
 *     .NET Framework 4.5.2
 */
 
-namespace AERS.Alert
+namespace AERS.EmergencyAlert
 {
 
     public class _2DCoordinate
     {
 
-        // These properties store latitude and longitude of a coordinate.
+        // The latitude and longitude of a coordinate.
 
         public double Latitude { get; private set; }
 

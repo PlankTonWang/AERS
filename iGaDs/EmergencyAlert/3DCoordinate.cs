@@ -39,13 +39,13 @@
 *     .NET Framework 4.5.2
 */
 
-namespace AERS.Alert
+namespace AERS.EmergencyAlert
 {
 
     class _3DCoordinate : _2DCoordinate
     {
 
-        // This property store the altitude of a 3D coordinate.
+        // The altitude of a 3D coordinate.
         public double Altitude { get; private set; }
 
         // Public constructor with parameters: latitude, longitude and altitude.

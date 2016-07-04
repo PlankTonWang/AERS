@@ -43,54 +43,78 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace AERS.Alert.CAP
+namespace AERS.EmergencyAlert.CAP
 {
 
     public class Info
     {
 
-        // These public properties store the information in <info> section of an CAP.
+        // These properties represent the information in <info> section of an CAP.
+        // An <info> section describes the detail alerting information of an CAP.
+        // Code values are defined in CAP profile: "http://docs.oasis-open.org/emergency/cap/v1.2/".
 
+        // The code denoting the language of the CAP alert.
         public string Language { get; private set; }
 
+        // The code denoting the category of the subject event of the CAP alert.
         public string EventCategory { get; private set; }
 
+        // The text denoting the type of the subject event of the CAP alert.
         public string EventType { get; private set; }
 
+        // The code denoting the type of action recommended for the target audience.
         public List<string> ResponseTypes { get; private set; }
 
+        // The code denoting the urgency of the subject event of the CAP alert.
         public string Urgency { get; private set; }
 
+        // The code denoting the severity of the subject event of the CAP alert.
         public string Severity { get; private set; }
 
+        // The code denoting the certainty of the subject event of the CAP alert.
         public string Certainty { get; private set; }
 
+        // The text describing the intended audience of the CAP alert.
         public List<string> Audiences { get; private set; }
 
+        // A system-specific code identifying the event type of the CAP alert.
+        // It is a valueName-value pair.
         public Value EventCode { get; private set; }
 
+        // The effective time of the information of the CAP alert.
         public DateTime EffectiveTime { get; private set; }
 
+        // The expected time of the beginning of the subject event of the CAP alert.
         public DateTime OnsetTime { get; private set; }
 
+        // The expiry time of the information of the CAP alert.
         public DateTime ExpirationTime { get; private set; }
 
+        // The text naming the originator of the CAP alert.
         public string SenderName { get; private set; }
 
+        // The text headline of the CAP alert.
         public string Headline { get; private set; }
 
+        // The text describing the subject event of the CAP alert.
         public string EventDescription { get; private set; }
 
+        // The text describing the recommended action to be taken by recipients of the CAP alert.
         public string Instructions { get; private set; }
 
+        // The identifier of the hyperlink associating additional information with the CAP alert.
         public Uri InformationURL { get; private set; }
 
+        // The text describing the contact for follow-up and confirmation of the CAP alert.
         public string ContactInfo { get; private set; }
 
+        // System-specific additional parameters associated with the CAP alert.
         public List<Value> Parameters { get; private set; }
 
+        // The containers for all component parts of the resource sub-elements of the info sub-elements of the CAP alert.
         public List<Resource> Resources { get; private set; }
 
+        // The containers for all component parts of the area sub-elements of the info sub-elements of the CAP alert.
         public List<AffectedArea> AffectedAreas { get; private set; }
 
         // This indexer is responsible for setting and getting the value of the given string index.
@@ -171,7 +195,7 @@ namespace AERS.Alert.CAP
                         break;
                     default:
 
-                        // To-do
+                        // To-do, when the object visitor gets with an unknown string index.
 
                         break;
 
@@ -282,10 +306,7 @@ namespace AERS.Alert.CAP
 
                     default:
 
-                        // Prints out the information for the test.
-                        Console.WriteLine("Detected an unknown tag: {0}", propertyName);
-
-                        // To-do
+                        // To-do, when the object visitor sets with an unknown string index.
 
                         break;
 

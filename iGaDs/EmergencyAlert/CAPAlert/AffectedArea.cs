@@ -18,7 +18,7 @@
 * 
 * Abstract:
 * 
-* 		AffectedArea class is a structure for storing the elements in <area> of an CAP,
+* 		AffectedArea class is a structure for storing the elements in <area> section of an CAP,
 * 		and it is designed to store the information to the corresponding properties.
 * 
 * Authors:
@@ -43,20 +43,25 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace AERS.Alert.CAP
+namespace AERS.EmergencyAlert.CAP
 {
 
     public class AffectedArea : GenericAffectedArea
     {
 
-        // These public properties store the information in <area> section of an CAP.
+        // These properties represent the information in <area> section of an CAP.
+        // A <area> section describes the affected area of an CAP.
 
+        // The paired values of points defining a polygon that delineates the affected area.
         public List<List<_2DCoordinate>> AreaPolygons { get; private set; }
 
+        // The geographic code delineating the affected area.
         public List<Value> AreaGeocodes { get; private set; }
 
+        // The specific or minimum altitude of the affected area.
         public double Altitude { get; protected set; }
 
+        // The maximum altitude of the affected area.
         public double Ceiling { get; protected set; }
 
         // This indexer is responsible for setting and getting the value of the given string index. 
@@ -97,7 +102,7 @@ namespace AERS.Alert.CAP
                         break;
                     default:
 
-                        // To-do
+                        // To-do, when the object visitor gets with an unknown string index.
 
                         break;
 
@@ -171,10 +176,7 @@ namespace AERS.Alert.CAP
 
                     default:
 
-                        // Prints out the information for the test.
-                        Console.WriteLine("Detected an unknown tag: {0}", propertyName);
-
-                        // To-do
+                        // To-do, when the object visitor sets with an unknown string index.
 
                         break;
 
