@@ -207,7 +207,7 @@ namespace AERS.EmergencyAlert.CAP
                             this.Infos = new List<Info>();
                         }
 
-                        this.Infos.Add(new Info((string)value));
+                        this.Infos.Add(new Info("<info>" + (string)value + "</info>"));
                         break;
                     default:
                         // To-do, when the object visitor sets with an unknown string index.

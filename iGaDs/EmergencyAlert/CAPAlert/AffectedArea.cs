@@ -149,7 +149,7 @@ namespace AERS.EmergencyAlert.CAP
                             this.AreaGeocodes = new List<Value>();
                         }
 
-                        this.AreaGeocodes.Add(new Value((string)value));
+                        this.AreaGeocodes.Add(new Value("<value>" + (string)value + "</value>"));
                         break;
 
                     case "altitude":

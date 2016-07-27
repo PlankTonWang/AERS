@@ -207,7 +207,7 @@ namespace AERS.EmergencyAlert.CAP
                         this.Audiences.Add((string)value);
                         break;
                     case "eventcode":
-                        this.EventCode = new Value((string)value);
+                        this.EventCode = new Value("<value>" + (string)value + "</value>");
                         break;
                     case "effective":
                         this.EffectiveTime = Convert.ToDateTime((string)value);
@@ -242,7 +242,7 @@ namespace AERS.EmergencyAlert.CAP
                             this.Parameters = new List<Value>();
                         }
 
-                        this.Parameters.Add(new Value((string)value));
+                        this.Parameters.Add(new Value("<value>" + (string)value + "</value>"));
                         break;
                     case "resource":
                         if (this.Resources == null)
@@ -250,7 +250,7 @@ namespace AERS.EmergencyAlert.CAP
                             this.Resources = new List<Resource>();
                         }
 
-                        this.Resources.Add(new Resource((string)value));
+                        this.Resources.Add(new Resource("<resource>" + (string)value + "</resource>"));
                         break;
                     case "area":
                         if (this.AffectedAreas == null)
@@ -258,7 +258,7 @@ namespace AERS.EmergencyAlert.CAP
                             this.AffectedAreas = new List<AffectedArea>();
                         }
 
-                        this.AffectedAreas.Add(new AffectedArea((string)value));
+                        this.AffectedAreas.Add(new AffectedArea("<area>" + (string)value + "</area>"));
                         break;
                     default:
                         // To-do, when the object visitor sets with an unknown string index.
