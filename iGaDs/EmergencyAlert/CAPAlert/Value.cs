@@ -19,26 +19,9 @@
 * Abstract:
 * 
 * 		Value class is defined to store some valueName-value pair elements of an CAP alert.
-* 
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*     None
-*
-* Environment:
-*
-*     .NET Framework 4.5.2
 */
 
-using System.Xml;
+using System.Collections.Generic;
 
 namespace AERS.EmergencyAlert.CAP
 {
@@ -52,30 +35,33 @@ namespace AERS.EmergencyAlert.CAP
         // The value of a valueName-value pair.
         public string value {  get; private set; }
 
-        // Public constructor with one parameter, it parses the given XmlNode.
-        public Value(XmlNode parameter)
+        // Public constructor.
+        public Value(string valueString)
         {
 
-            XmlNodeList childNodes = parameter.ChildNodes;
-            this.valueName = childNodes[0].InnerXml;
-            this.value = childNodes[1].InnerXml;
+            // Uses XMLParser to parse valueString.
+            XMLParser XMLParser = new XMLParser(valueString);
+
+            List<string> nodeNames, nodeValues;
+
+            // Extracts the valueNames and value of the node.
+            XMLParser.ParseXML(out nodeNames, out nodeValues);
+
+            valueName = nodeValues[0];
+            value = nodeValues[1];
 
         }
 
         // Defines the '==' operator between two Values.
         public static bool operator ==(Value p1, Value p2)
         {
-
             return ((p1.valueName == p2.valueName) && (p1.value == p2.value));
-
         }
 
         // Defines the '!=' operator between two Values.
         public static bool operator !=(Value p1, Value p2)
         {
-
             return ((p1.valueName != p2.valueName) || (p1.value != p2.value));
-
         }
 
     }

@@ -42,22 +42,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alert\2DCoordinate.cs" />
-    <Compile Include="Alert\3DCoordinate.cs" />
-    <Compile Include="Alert\CAPAlert\Info.cs" />
-    <Compile Include="Alert\GenericAffectedArea.cs" />
-    <Compile Include="Alert\GenericAlert.cs" />
-    <Compile Include="Alert\CAPAlert\Circle.cs" />
-    <Compile Include="Alert\IndoorCoordinate.cs" />
+    <Compile Include="Device\Actuators\GenericDoor.cs" />
+    <Compile Include="Device\Actuators\GenericElevator.cs" />
+    <Compile Include="Device\Actuators\GenericValve.cs" />
+    <Compile Include="Device\Sensors\GenericBarometer.cs" />
+    <Compile Include="Device\Sensors\GenericHygrometer.cs" />
+    <Compile Include="Device\Sensors\GenericThermometer.cs" />
+    <Compile Include="EmergencyAlert\2DCoordinate.cs" />
+    <Compile Include="EmergencyAlert\3DCoordinate.cs" />
+    <Compile Include="EmergencyAlert\CAPAlert\Info.cs" />
+    <Compile Include="EmergencyAlert\GenericAffectedArea.cs" />
+    <Compile Include="EmergencyAlert\GenericEmergencyAlert.cs" />
+    <Compile Include="EmergencyAlert\CAPAlert\Circle.cs" />
+    <Compile Include="EmergencyAlert\GenericInfo.cs" />
+    <Compile Include="EmergencyAlert\GenericResource.cs" />
+    <Compile Include="EmergencyAlert\IndoorCoordinate.cs" />
+    <Compile Include="EmergencyAlert\XMLParser.cs" />
     <Compile Include="iGaDs\Configuration\SemanticTable.cs" />
     <Compile Include="iGaDs\ActionsHandler.cs" />
     <Compile Include="Device\ActuatorController.cs" />
     <Compile Include="Device\ActuatorEventArgs.cs" />
-    <Compile Include="iGaDs\AlertBuffer.cs" />
-    <Compile Include="Alert\CAPAlert\AffectedArea.cs" />
-    <Compile Include="Alert\CAPAlert\CAPAlert.cs" />
-    <Compile Include="Alert\CAPAlert\Value.cs" />
-    <Compile Include="Alert\CAPAlert\Resource.cs" />
+    <Compile Include="iGaDs\EmergencyAlertBuffer.cs" />
+    <Compile Include="EmergencyAlert\CAPAlert\AffectedArea.cs" />
+    <Compile Include="EmergencyAlert\CAPAlert\CAPAlert.cs" />
+    <Compile Include="EmergencyAlert\CAPAlert\Value.cs" />
+    <Compile Include="EmergencyAlert\CAPAlert\Resource.cs" />
     <Compile Include="iGaDs\Configuration\Action.cs" />
     <Compile Include="iGaDs\Configuration\LocationInfo.cs" />
     <Compile Include="iGaDs\Configuration\Profile.cs" />
@@ -75,6 +84,7 @@
     <Compile Include="Device\SensorMonitor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -39,7 +39,7 @@
 *     .NET Framework 4.5.2
 */
 
-using AERS.Alert.CAP;
+using AERS.EmergencyAlert.CAP;
 
 namespace AERS.iGaDs.Configuration
 {

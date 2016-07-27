@@ -1,84 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="AERS.EmergencyAlert._2DCoordinate">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="3" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmergencyAlert\2DCoordinate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert._3DCoordinate">
-    <Position X="3" Y="2.75" Width="1.5" />
+    <Position X="3" Y="3.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmergencyAlert\3DCoordinate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.GenericAffectedArea">
-    <Position X="6" Y="5.25" Width="2" />
+    <Position X="8.25" Y="5.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAACAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmergencyAlert\GenericAffectedArea.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.GenericEmergencyAlert">
-    <Position X="0.5" Y="5.75" Width="1.75" />
+    <Position X="0.5" Y="5.75" Width="3.75" />
     <TypeIdentifier>
       <HashCode>AAAQAABEAAAAAiAACACAAAAEAAAAAAAEAQACACQGAgA=</HashCode>
       <FileName>EmergencyAlert\GenericEmergencyAlert.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.IndoorCoordinate">
-    <Position X="0.75" Y="2.75" Width="1.5" />
+    <Position X="0.5" Y="3.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmergencyAlert\IndoorCoordinate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.CAP.AffectedArea">
-    <Position X="6" Y="7.5" Width="2" />
+    <Position X="8.25" Y="7.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAACAAAgAAAABAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>EmergencyAlert\CAPAlert\AffectedArea.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.CAP.CAPAlert">
-    <Position X="3.5" Y="5.75" Width="1.75" />
+    <Position X="5" Y="5.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>BEhAAABAIgAgAIAACAAAAAAAAAAAIAAAAACAAAMAAAA=</HashCode>
       <FileName>EmergencyAlert\CAPAlert\CAPAlert.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.CAP.Circle">
-    <Position X="5.25" Y="2.75" Width="1.5" />
+    <Position X="5.5" Y="3.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmergencyAlert\CAPAlert\Circle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.CAP.Info">
-    <Position X="11.25" Y="0.5" Width="2.25" />
+    <Position X="12" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAgEKAAEAAAACAQAAAIEAQAJAAABAJACAKQiAAA=</HashCode>
       <FileName>EmergencyAlert\CAPAlert\Info.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.CAP.Resource">
-    <Position X="8.75" Y="6" Width="2" />
+    <Position X="12.25" Y="7.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAgAgACAAAAAAAACAAAAAAAgAAAAAAAAg=</HashCode>
       <FileName>EmergencyAlert\CAPAlert\Resource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.EmergencyAlert.CAP.Value">
-    <Position X="11.5" Y="6.5" Width="2" />
+    <Position X="5.75" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAACAAAAAAAAiA=</HashCode>
       <FileName>EmergencyAlert\CAPAlert\Value.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AERS.iGaDs.EmergencyAlertBuffer">
-    <Position X="7.5" Y="0.5" Width="3" />
+    <Position X="8.25" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>ECBAAAAAAABAgAAAAAIAAABAAADAAAAIAABQAAAAAAA=</HashCode>
       <FileName>iGaDs\EmergencyAlertBuffer.cs</FileName>

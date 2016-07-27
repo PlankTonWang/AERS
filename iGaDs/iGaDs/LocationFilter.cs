@@ -41,10 +41,10 @@
  */
 
 using System;
-using AERS.Alert.CAP;
+using AERS.EmergencyAlert.CAP;
 using AERS.iGaDs.Configuration;
 using System.Collections.Generic;
-using AERS.Alert;
+using AERS.EmergencyAlert;
 using System.Device.Location;
 
 namespace AERS.iGaDs

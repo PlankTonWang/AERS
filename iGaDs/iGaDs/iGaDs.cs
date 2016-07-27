@@ -57,7 +57,7 @@ namespace AERS.iGaDs
 
 
         // These properties stores the core components of this iGaDs.
-        AlertBuffer AlertBuffer { get; set; }
+        EmergencyAlertBuffer AlertBuffer { get; set; }
 
         LocationFilter LocationFilter { get; set; }
 

@@ -26,22 +26,6 @@
 *       The inputted emergency alerts should be parsed to an non-string object before it stored.
 *       Here we designed it parses alerts into some alert types derived from GenericEmergencyAlert.
 *
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*       None
-*
-* Environment:
-*
-*       .NET Framework 4.5.2
 */
 
 using System;
@@ -77,9 +61,7 @@ namespace AERS.iGaDs
         // Public constructor.
         public EmergencyAlertBuffer()
         {
-
             buffer = new Queue<GenericEmergencyAlert>();
-
         }
 
         // Public constructor. It initializes Size with the given integer.
@@ -117,7 +99,7 @@ namespace AERS.iGaDs
         }
 
         // Removes and returns an emergency alert in this.buffer.
-        public virtual GenericEmergencyAlert Remove()
+        public virtual GenericEmergencyAlert GetAlert()
         {
 
             GenericEmergencyAlert result = null;

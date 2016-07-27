@@ -21,22 +21,6 @@
 * 		CAPAlert class is the main structrue representing an CAP alert (Common Alerting Protocol message), 
 * 		and it is designed to parse and store an CAP alert from alert(message) XML strings.
 * 
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*     None
-*
-* Environment:
-*
-*     .NET Framework 4.5.2
 */
 
 using System.Xml;
@@ -75,9 +59,6 @@ namespace AERS.EmergencyAlert.CAP
         // The containers for all component parts of the info sub-elements of the CAP alert.
         public List<Info> Infos { get; private set; }
 
-        // The containers for all component parts of the resource sub-elements of the info sub-elements of the CAP alert.
-        public List<Resource> Resources { get; private set; }
-
         // This indexer is responsible for setting and getting the value of the given string index.
         // It provides an user-friendly interface of accessing the properties.
         public override object this[string propertyName]
@@ -113,22 +94,10 @@ namespace AERS.EmergencyAlert.CAP
                         result = base.MessageStatus;
                         break;
                     case "msgtype":
-                        result = base.MessageTpye;
+                        result = base.MessageType;
                         break;
                     case "scope":
                         result = base.Scope;
-                        break;
-                    case "event":
-                        result = base.EventType;
-                        break;
-                    case "urgency":
-                        result = base.Urgency;
-                        break;
-                    case "severity":
-                        result = base.Severity;
-                        break;
-                    case "certainty":
-                        result = base.Certainty;
                         break;
                     case "info":
                         result = this.Infos;
@@ -154,16 +123,8 @@ namespace AERS.EmergencyAlert.CAP
                     case "incidents":
                         result = this.IncidentIDs;                        
                         break;
-                    case "area":
-                        result = base.AffectedAreas;
-                        break;
-                    case "resource":
-                        result = this.Resources;
-                        break;
                     default:
-
                         // To-do, when the object visitor gets with an unknown string index.
-
                         break;
 
                 }
@@ -191,23 +152,11 @@ namespace AERS.EmergencyAlert.CAP
                         base.MessageStatus = (string)value;
                         break;
                     case "msgtype":
-                        base.MessageTpye = (string)value;
+                        base.MessageType = (string)value;
                         break;
                     case "scope":
                         base.Scope = (string)value;
                         break;
-                    case "event":
-                        base.EventType = (string)value;
-                        break;
-                    case "urgency":
-                        base.Urgency = (string)value;
-                        break;
-                    case "severity":
-                        base.Severity = (string)value;
-                        break;
-                    case "certainty":
-                        base.Certainty = (string)value;
-                        break;                    
                     case "source":
                         this.Source = (string)value;
                         break;
@@ -225,7 +174,6 @@ namespace AERS.EmergencyAlert.CAP
                             }
                         }
                         break;
-
                     case "code":
                         if (this.HandlingCodes == null)
                         {
@@ -234,7 +182,6 @@ namespace AERS.EmergencyAlert.CAP
 
                         this.HandlingCodes.Add((string)value);
                         break;
-
                     case "note":
                         this.Note = (string)value;
                         break;
@@ -246,7 +193,6 @@ namespace AERS.EmergencyAlert.CAP
                             this.ReferenceIDs.Add(ReferenceID);
                         }
                         break;
-
                     case "incidents":
                         this.IncidentIDs = new List<string>();
 
@@ -255,38 +201,16 @@ namespace AERS.EmergencyAlert.CAP
                             this.IncidentIDs.Add(ReferenceID);
                         }
                         break;
-
                     case "info":
                         if (this.Infos == null)
                         {
                             this.Infos = new List<Info>();
                         }
 
-                        this.Infos.Add((Info)value);
+                        this.Infos.Add(new Info((string)value));
                         break;
-
-                    case "area":
-                        if (base.AffectedAreas == null)
-                        {
-                            base.AffectedAreas = new List<AffectedArea>();
-                        }
-
-                        ((List<AffectedArea>)base.AffectedAreas).Add((AffectedArea)value);
-                        break;
-
-                    case "resource":
-                        if (this.Resources == null)
-                        {
-                            this.Resources = new List<Resource>();
-                        }
-
-                        this.Resources.Add((Resource)value);
-                        break;
-
                     default:
-
                         // To-do, when the object visitor sets with an unknown string index.
-
                         break;
 
                 }
@@ -305,133 +229,19 @@ namespace AERS.EmergencyAlert.CAP
             base.ProtocolVersion = 1.2;       
             base.SenderType = "Emergency Agency";
 
-            // Calls the method to start parsing the CAP string.
-            parseAlert(CAPString);
+            // Uses XMLParser to parse CAPString.
+            XMLParser XMLParser = new XMLParser(CAPString);
 
-        }
+            List<string> nodeNames, nodeValues;
 
-        // Parses the <alert> section of an CAP from the given XML string.
-        protected override void parseAlert(string alertString)
-        {
+            // Extracts the names and values of all the nodes in the CAP.
+            XMLParser.ParseXML(out nodeNames, out nodeValues);
 
-            // Parses the input CAP string to an XmlDocument(.NET built-in XML parser).
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.LoadXml(alertString);
-
-            // Gets the root node of the XML document, the <alert> section of an CAP.
-            XmlNode root = xmlDocument.DocumentElement;
-            XmlNodeList childNodes = root.ChildNodes;
-
-            // Sets each property with the content of the CAP by iteratively visiting each XML node.
-            foreach (XmlNode node in childNodes)
+            // Sets each value of nodes to the corresponding property of this CAPAlert.
+            for (int i = 0; i < nodeNames.Count; i++)
             {
-
-                // Recursively visits and parses subsections of an CAP.
-                if (node.Name == "info")
-                {                 
-                    this[node.Name] = parseInfo(node);                   
-                }
-                else
-                {
-                    this[node.Name] = node.InnerXml;
-                }   
-
+                this[nodeNames[i]] = nodeValues[i];
             }
-
-            // Copys the basic information out of the first <info> of an CAP to the properties.
-            // These information are regarded as the basic informations of an emergency alert.
-            // Thus they shall be easily accessed in an emergency alert class.
-            base.EventType = Infos[0].EventType;
-            base.Urgency = Infos[0].Urgency;
-            base.Severity = Infos[0].Severity;
-            base.Certainty = Infos[0].Certainty;
-
-        }
-
-        // Parses an <info> section of an CAP from the given XmlNode.
-        private Info parseInfo(XmlNode info)
-        {
-
-            Info result = new Info();
-            XmlNodeList childNodes = info.ChildNodes;
-
-            foreach (XmlNode node in childNodes)
-            {
-
-                // Parses the special cases of an <info> section.
-                // Each of them is parsed into a specific object other than a string.
-                switch (node.Name.ToLower())
-                {
-
-                    case "eventcode":
-                        result[node.Name] = node;
-                        break;
-                    case "parameter":
-                        result[node.Name] = node;
-                        break;
-                    case "resource":
-                        Resource resource = parseResource(node);
-                        result[node.Name] = resource;
-                        this[node.Name] = resource;
-                        break;
-
-                    case "area":
-                        AffectedArea affectedArea = parseAffectedArea(node);
-                        result[node.Name] = affectedArea;
-                        this[node.Name] = affectedArea;
-                        break;
-
-                    default:
-                        result[node.Name] = node.InnerXml;
-                        break;
-
-                }
-
-            }
-
-            return result;
-
-        }
-
-        // Parses a <resource> section of an <info> section from the given XmlNode.
-        private Resource parseResource(XmlNode resource)
-        {
-
-            Resource result = new Resource();
-            XmlNodeList childNodes = resource.ChildNodes;
-
-            foreach (XmlNode node in childNodes)
-            {
-                result[node.Name] = node.InnerXml;
-            }
-
-            return result;
-
-        }
-
-        // Parses an <area> section of an <info> section from the given XmlNode.
-        private AffectedArea parseAffectedArea(XmlNode affectedArea)
-        {
-
-            AffectedArea result = new AffectedArea();
-            XmlNodeList childNodes = affectedArea.ChildNodes;
-
-            foreach (XmlNode node in childNodes)
-            {
-
-                // The special case of an <area> section.
-                if (node.Name == "geocode")
-                {
-                    result[node.Name] = node;
-                }
-                else
-                {
-                    result[node.Name] = node.InnerXml;
-                }
-
-            }
-
-            return result;
 
         }
 

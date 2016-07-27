@@ -21,22 +21,6 @@
 * 		AffectedArea class is a structure for storing the elements in <area> section of an CAP,
 * 		and it is designed to store the information to the corresponding properties.
 * 
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*     None
-*
-* Environment:
-*
-*     .NET Framework 4.5.2
 */
 
 using System;
@@ -54,6 +38,10 @@ namespace AERS.EmergencyAlert.CAP
 
         // The paired values of points defining a polygon that delineates the affected area.
         public List<List<_2DCoordinate>> AreaPolygons { get; private set; }
+
+        // The values of a point and radius delineating the affected area of an emergency alert.
+        // A circle is represented by a Circle object. 
+        public List<Circle> AreaCircles { get; private set; }
 
         // The geographic code delineating the affected area.
         public List<Value> AreaGeocodes { get; private set; }
@@ -78,7 +66,7 @@ namespace AERS.EmergencyAlert.CAP
                 {
 
                     case "areadesc":
-                        result = this.AreaDescription;
+                        result = base.AreaDescription;
                         break;
 
                     case "polygons":
@@ -101,9 +89,7 @@ namespace AERS.EmergencyAlert.CAP
                         result = this.Ceiling;
                         break;
                     default:
-
                         // To-do, when the object visitor gets with an unknown string index.
-
                         break;
 
                 }
@@ -145,16 +131,16 @@ namespace AERS.EmergencyAlert.CAP
                         break;
 
                     case "circle":
-                        if (base.AreaCircles == null)
+                        if (this.AreaCircles == null)
                         {
-                            base.AreaCircles = new List<Circle>();
+                            this.AreaCircles = new List<Circle>();
                         }
 
                         string[] circle = ((string)value).Split(' ');
                         latitude = Convert.ToDouble(circle[0].Split(',')[0]);
                         longitue = Convert.ToDouble(circle[0].Split(',')[1]);
                         double radius = Convert.ToDouble(circle[1]);
-                        ((List<Circle>)base.AreaCircles).Add(new Circle(latitude, longitue, radius));
+                        ((List<Circle>)this.AreaCircles).Add(new Circle(latitude, longitue, radius));
                         break;
 
                     case "geocode":
@@ -163,7 +149,7 @@ namespace AERS.EmergencyAlert.CAP
                             this.AreaGeocodes = new List<Value>();
                         }
 
-                        this.AreaGeocodes.Add(new Value((XmlNode)value));
+                        this.AreaGeocodes.Add(new Value((string)value));
                         break;
 
                     case "altitude":
@@ -175,9 +161,7 @@ namespace AERS.EmergencyAlert.CAP
                         break;
 
                     default:
-
                         // To-do, when the object visitor sets with an unknown string index.
-
                         break;
 
                 }
@@ -187,10 +171,22 @@ namespace AERS.EmergencyAlert.CAP
         }
 
         // Public constructor.
-        public AffectedArea()
+        public AffectedArea(string areaString)
         {
 
-            // Null constructor.
+            // Uses XMLParser to parse areaString.
+            XMLParser XMLParser = new XMLParser(areaString);
+
+            List<string> nodeNames, nodeValues;
+
+            // Extracts the names and values of all the nodes in the <area>.
+            XMLParser.ParseXML(out nodeNames, out nodeValues);
+
+            // Sets each value of nodes to the corresponding property of this AffectedArea.
+            for (int i = 0; i < nodeNames.Count; i++)
+            {
+                this[nodeNames[i]] = nodeValues[i];
+            }
 
         }
 

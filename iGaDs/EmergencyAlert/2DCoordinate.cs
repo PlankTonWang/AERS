@@ -21,22 +21,6 @@
 * 		_2DCoordinate class is a structure for storing a 2D GEO coordinate,
 *       that consists of latitude and longitude.
 * 
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*     None
-*
-* Environment:
-*
-*     .NET Framework 4.5.2
 */
 
 namespace AERS.EmergencyAlert

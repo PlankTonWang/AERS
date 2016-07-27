@@ -21,22 +21,6 @@
 * 		Info class is a structrue for storing the elements in <info> of an CAP alert, 
 * 		and it is designed to store the information to the corresponding properties.
 * 
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*     None
-*
-* Environment:
-*
-*     .NET Framework 4.5.2
 */
 
 using System;
@@ -46,33 +30,15 @@ using System.Xml;
 namespace AERS.EmergencyAlert.CAP
 {
 
-    public class Info
+    public class Info : GenericInfo
     {
 
         // These properties represent the information in <info> section of an CAP.
         // An <info> section describes the detail alerting information of an CAP.
         // Code values are defined in CAP profile: "http://docs.oasis-open.org/emergency/cap/v1.2/".
 
-        // The code denoting the language of the CAP alert.
-        public string Language { get; private set; }
-
-        // The code denoting the category of the subject event of the CAP alert.
-        public string EventCategory { get; private set; }
-
-        // The text denoting the type of the subject event of the CAP alert.
-        public string EventType { get; private set; }
-
         // The code denoting the type of action recommended for the target audience.
         public List<string> ResponseTypes { get; private set; }
-
-        // The code denoting the urgency of the subject event of the CAP alert.
-        public string Urgency { get; private set; }
-
-        // The code denoting the severity of the subject event of the CAP alert.
-        public string Severity { get; private set; }
-
-        // The code denoting the certainty of the subject event of the CAP alert.
-        public string Certainty { get; private set; }
 
         // The text describing the intended audience of the CAP alert.
         public List<string> Audiences { get; private set; }
@@ -119,7 +85,7 @@ namespace AERS.EmergencyAlert.CAP
 
         // This indexer is responsible for setting and getting the value of the given string index.
         // It provides an user-friendly interface of accessing the properties. 
-        public object this[string propertyName]
+        public override object this[string propertyName]
         {
 
             get
@@ -129,27 +95,26 @@ namespace AERS.EmergencyAlert.CAP
 
                 switch (propertyName.ToLower())
                 {
-
                     case "language":
-                        result = this.Language;
+                        result = base.Language;
                         break;
                     case "category":
-                        result = this.EventCategory;
+                        result = base.EventCategory;
                         break;
                     case "event":
-                        result = this.EventType;
+                        result = base.EventType;
                         break;
                     case "responsetype":
                         result = this.ResponseTypes;
                         break;
                     case "urgency":
-                        result = this.Urgency;
+                        result = base.Urgency;
                         break;
                     case "severity":
-                        result = this.Severity;
+                        result = base.Severity;
                         break;
                     case "certainty":
-                        result = this.Certainty;
+                        result = base.Certainty;
                         break;
                     case "audience":
                         result = this.Audiences;
@@ -194,11 +159,8 @@ namespace AERS.EmergencyAlert.CAP
                         result = this.AffectedAreas;
                         break;
                     default:
-
                         // To-do, when the object visitor gets with an unknown string index.
-
                         break;
-
                 }
 
                 return result;
@@ -210,15 +172,14 @@ namespace AERS.EmergencyAlert.CAP
 
                 switch (propertyName.ToLower())
                 {
-
                     case "language":
-                        this.Language = (string)value;
+                        base.Language = (string)value;
                         break;
                     case "category":
-                        this.EventCategory = (string)value;
+                        base.EventCategory = (string)value;
                         break;
                     case "event":
-                        this.EventType = (string)value;
+                        base.EventType = (string)value;
                         break;
                     case "responsetype":
                         if (this.ResponseTypes == null)
@@ -228,15 +189,14 @@ namespace AERS.EmergencyAlert.CAP
 
                         this.ResponseTypes.Add((string)value);
                         break;
-
                     case "urgency":
-                        this.Urgency = (string)value;
+                        base.Urgency = (string)value;
                         break;
                     case "severity":
-                        this.Severity = (string)value;
+                        base.Severity = (string)value;
                         break;
                     case "certainty":
-                        this.Certainty = (string)value;
+                        base.Certainty = (string)value;
                         break;
                     case "audience":
                         if (this.Audiences == null)
@@ -246,9 +206,8 @@ namespace AERS.EmergencyAlert.CAP
 
                         this.Audiences.Add((string)value);
                         break;
-
                     case "eventcode":
-                        this.EventCode = new Value((XmlNode)value);
+                        this.EventCode = new Value((string)value);
                         break;
                     case "effective":
                         this.EffectiveTime = Convert.ToDateTime((string)value);
@@ -283,33 +242,27 @@ namespace AERS.EmergencyAlert.CAP
                             this.Parameters = new List<Value>();
                         }
 
-                        this.Parameters.Add(new Value((XmlNode)value));
+                        this.Parameters.Add(new Value((string)value));
                         break;
-
                     case "resource":
                         if (this.Resources == null)
                         {
                             this.Resources = new List<Resource>();
                         }
 
-                        this.Resources.Add((Resource)value);
+                        this.Resources.Add(new Resource((string)value));
                         break;
-
                     case "area":
                         if (this.AffectedAreas == null)
                         {
                             this.AffectedAreas = new List<AffectedArea>();
                         }
 
-                        this.AffectedAreas.Add((AffectedArea)value);
+                        this.AffectedAreas.Add(new AffectedArea((string)value));
                         break;
-
                     default:
-
                         // To-do, when the object visitor sets with an unknown string index.
-
                         break;
-
                 }
 
             }
@@ -317,10 +270,22 @@ namespace AERS.EmergencyAlert.CAP
         }
 
         // Public constructor.
-        public Info()
+        public Info(string infoString)
         {
 
-            // Null constructor.
+            // Uses XMLParser to parse infoString.
+            XMLParser XMLParser = new XMLParser(infoString);
+
+            List<string> nodeNames, nodeValues;
+
+            // Extracts the names and values of all the nodes in the <info>.
+            XMLParser.ParseXML(out nodeNames, out nodeValues);
+
+            // Sets each value of nodes to the corresponding property of this Info.
+            for (int i = 0; i < nodeNames.Count; i++)
+            {
+                this[nodeNames[i]] = nodeValues[i];
+            }
 
         }
 

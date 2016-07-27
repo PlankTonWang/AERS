@@ -21,37 +21,19 @@
 * 		Resource class is a structure for storing the elements in <resource> section of an CAP.
 * 		and it is designed to store the information to the corresponding properties.
 * 
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*     None
-*
-* Environment:
-*
-*     .NET Framework 4.5.2
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace AERS.EmergencyAlert.CAP
 {
 
-    public class Resource
+    public class Resource : GenericResource
     {
 
         // These properties represent the information in <resource> section of an CAP.
         // A <resource> section describes the resource file of an CAP.
-
-        // The text describing the type and content of the resource file.
-        public string ResourceDescription { get; private set; }
 
         // The identifier of the MIME content type and sub-type describing the resource file.
         public string MediaType { get; private set; }
@@ -70,7 +52,7 @@ namespace AERS.EmergencyAlert.CAP
 
         // This indexer is responsible for setting and getting the value of the given string index.
         // It provides an user-friendly interface of accessing the properties. 
-        public object this[string propertyName]
+        public override object this[string propertyName]
         {
 
             get
@@ -82,7 +64,7 @@ namespace AERS.EmergencyAlert.CAP
                 {
 
                     case "resourcedesc":
-                        result = this.ResourceDescription;
+                        result = base.ResourceDescription;
                         break;
                     case "mimetype":
                         result = this.MediaType;
@@ -100,9 +82,7 @@ namespace AERS.EmergencyAlert.CAP
                         result = this.Digest;
                         break;
                     default:
-
                         // To-do, when the object visitor gets with an unknown string index.
-
                         break;
 
                 }
@@ -118,7 +98,7 @@ namespace AERS.EmergencyAlert.CAP
                 {
 
                     case "resourcedesc":
-                        this.ResourceDescription = (string)value;
+                        base.ResourceDescription = (string)value;
                         break;
                     case "mimetype":
                         this.MediaType = (string)value;
@@ -136,9 +116,7 @@ namespace AERS.EmergencyAlert.CAP
                         this.Digest = Convert.ToDouble(value);
                         break;
                     default:
-
                         // To-do, when the object visitor sets with an unknown string index.
-
                         break;
 
                 }
@@ -148,11 +126,23 @@ namespace AERS.EmergencyAlert.CAP
         }
 
         // Public constructor.
-        public Resource()
+        public Resource(string resourceString)
         {
 
-            // Null constructor.
-           
+            // Uses XMLParser to parse resourceString.
+            XMLParser XMLParser = new XMLParser(resourceString);
+
+            List<string> nodeNames, nodeValues;
+
+            // Extracts the names and values of all the nodes in the <resource>.
+            XMLParser.ParseXML(out nodeNames, out nodeValues);
+
+            // Sets each value of nodes to the corresponding property of this Resource.
+            for (int i = 0; i < nodeNames.Count; i++)
+            {
+                this[nodeNames[i]] = nodeValues[i];
+            }
+
         }
 
     }

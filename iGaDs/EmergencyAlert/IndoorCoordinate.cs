@@ -21,22 +21,6 @@
 * 		IndoorCoordinate is a derivative class of _2DCoordinate class.
 *       It is a data structure of an indoor coordinate with floor info and 2Dcoordinate.
 * 
-* Authors:
-* 
-* 		Gary Wang, garywang5566@gmail.com 20-May-2016
-* 
-* License:
-* 
-* 		GPL 3.0 This file is subject to the terms and conditions defined
-* 		in file 'COPYING.txt', which is part of this source code package.
-* 
-* Major Revisions:
-* 	
-*     None
-*
-* Environment:
-*
-*     .NET Framework 4.5.2
 */
 
 namespace AERS.EmergencyAlert

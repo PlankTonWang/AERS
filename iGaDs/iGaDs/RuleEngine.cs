@@ -41,7 +41,7 @@
  */
 
 using System.Collections.Generic;
-using AERS.Alert.CAP;
+using AERS.EmergencyAlert.CAP;
 using AERS.iGaDs.Configuration;
 
 namespace AERS.iGaDs
