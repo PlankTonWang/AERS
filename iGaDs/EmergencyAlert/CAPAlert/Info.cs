@@ -273,13 +273,13 @@ namespace AERS.EmergencyAlert.CAP
         public Info(string infoString)
         {
 
-            // Uses XMLParser to parse infoString.
-            XMLParser XMLParser = new XMLParser(infoString);
+            // Uses XMLDoc to parse infoString.
+            base.XMLDoc = new XMLDoc(infoString);
 
             List<string> nodeNames, nodeValues;
 
             // Extracts the names and values of all the nodes in the <info>.
-            XMLParser.ParseXML(out nodeNames, out nodeValues);
+            XMLDoc.ParseXML(out nodeNames, out nodeValues);
 
             // Sets each value of nodes to the corresponding property of this Info.
             for (int i = 0; i < nodeNames.Count; i++)

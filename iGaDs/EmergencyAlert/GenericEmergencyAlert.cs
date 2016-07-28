@@ -64,6 +64,9 @@ namespace AERS.EmergencyAlert
         // Code value could be "Public", "Restricted", "Private".
         public string Scope { get; protected set; }
 
+        // This XMLDoc used to parse the input string by calling its ParseXML method.
+        public XMLDoc XMLDoc { get; protected set; }
+
         // Override this indexer to implement the get, set accessors for accessing the
         // properties of this emergency alert by a string index.
         // e.g., this["protocol"] represents the access of AlertingProtocol property. 

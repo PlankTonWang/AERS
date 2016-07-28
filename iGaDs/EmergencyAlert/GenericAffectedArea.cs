@@ -36,6 +36,9 @@ namespace AERS.EmergencyAlert
         // The text description of an affected area.
         public string AreaDescription { get; protected set; }
 
+        // This XMLDoc used to parse the input string by calling its ParseXML method.
+        public XMLDoc XMLDoc { get; protected set; }
+
         // Override this indexer to implement the get, set accessors for accessing the
         // properties of this affected area by a string index.
         // e.g., this["areaDesc"] represents the access of AreaDescription property. 

@@ -1,6 +1,6 @@
 ﻿/**
  * 
- * XMLParser.cs defines a class for for Alert library in AERS framework.
+ * XMLDoc.cs defines a class for for Alert library in AERS framework.
  * 
  * Copyright (c) 2016 OpenISDM
  * 
@@ -14,11 +14,11 @@
  * 
  * File Name:
  * 
- * 		XMLParser.cs
+ * 		XMLDoc.cs
  * 
  * Abstract:
  * 
- * 		XMLParser class implements a parser for parsing XML string into two string-lists,
+ * 		XMLDoc class implements a XML parser for parsing XML string into two string-lists,
  *      that respectively contains names and values of all the nodes in the XML string.   
  * 
  * Authors:
@@ -45,12 +45,12 @@ using System.Xml;
 namespace AERS.EmergencyAlert
 {
 
-    public class XMLParser
+    public class XMLDoc
     {
 
         private string sourceString { get; set; }
 
-        public XMLParser(string sourceString)
+        public XMLDoc(string sourceString)
         {
 
             this.sourceString = sourceString;

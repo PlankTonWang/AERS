@@ -49,6 +49,9 @@ namespace AERS.EmergencyAlert
         // Code value could be "Observed", "Likely", "Possible", "Unlikely", "Unknown".
         public string Certainty { get; protected set; }
 
+        // This XMLDoc used to parse the input string by calling its ParseXML method.
+        public XMLDoc XMLDoc { get; protected set; }
+
         // Override this indexer to implement the get, set accessors for accessing the
         // properties of this info by a string index.
         // e.g., this["language"] represents the access of Language property. 

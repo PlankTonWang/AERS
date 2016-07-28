@@ -229,13 +229,13 @@ namespace AERS.EmergencyAlert.CAP
             base.ProtocolVersion = 1.2;       
             base.SenderType = "Emergency Agency";
 
-            // Uses XMLParser to parse CAPString.
-            XMLParser XMLParser = new XMLParser(CAPString);
+            // Uses XMLDoc to parse CAPString.
+            base.XMLDoc = new XMLDoc(CAPString);
 
             List<string> nodeNames, nodeValues;
 
             // Extracts the names and values of all the nodes in the CAP.
-            XMLParser.ParseXML(out nodeNames, out nodeValues);
+            XMLDoc.ParseXML(out nodeNames, out nodeValues);
 
             // Sets each value of nodes to the corresponding property of this CAPAlert.
             for (int i = 0; i < nodeNames.Count; i++)

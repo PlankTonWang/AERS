@@ -57,7 +57,7 @@
     <Compile Include="EmergencyAlert\GenericInfo.cs" />
     <Compile Include="EmergencyAlert\GenericResource.cs" />
     <Compile Include="EmergencyAlert\IndoorCoordinate.cs" />
-    <Compile Include="EmergencyAlert\XMLParser.cs" />
+    <Compile Include="EmergencyAlert\XMLDoc.cs" />
     <Compile Include="iGaDs\Configuration\SemanticTable.cs" />
     <Compile Include="iGaDs\ActionsHandler.cs" />
     <Compile Include="Device\ActuatorController.cs" />

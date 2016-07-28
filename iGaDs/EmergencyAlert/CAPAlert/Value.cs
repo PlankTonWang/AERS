@@ -35,17 +35,20 @@ namespace AERS.EmergencyAlert.CAP
         // The value of a valueName-value pair.
         public string value {  get; private set; }
 
+        // This XMLDoc used to parse the input string by calling its ParseXML method.
+        public XMLDoc XMLDoc { get; private set; }
+
         // Public constructor.
         public Value(string valueString)
         {
 
-            // Uses XMLParser to parse valueString.
-            XMLParser XMLParser = new XMLParser(valueString);
+            // Uses XMLDoc to parse valueString.
+            this.XMLDoc = new XMLDoc(valueString);
 
             List<string> nodeNames, nodeValues;
 
             // Extracts the valueNames and value of the node.
-            XMLParser.ParseXML(out nodeNames, out nodeValues);
+            XMLDoc.ParseXML(out nodeNames, out nodeValues);
 
             valueName = nodeValues[0];
             value = nodeValues[1];

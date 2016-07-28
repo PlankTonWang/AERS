@@ -31,6 +31,9 @@ namespace AERS.EmergencyAlert
         // The text describing the type and content of the resource file.
         public string ResourceDescription { get; protected set; }
 
+        // This XMLDoc used to parse the input string by calling its ParseXML method.
+        public XMLDoc XMLDoc { get; protected set; }
+
         // Override this indexer to implement the get, set accessors for accessing the
         // properties of this resource by a string index.
         // e.g., this["resourceDesc"] represents the access of ResourceDescription property. 

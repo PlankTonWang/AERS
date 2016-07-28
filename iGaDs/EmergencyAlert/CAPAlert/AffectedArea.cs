@@ -174,13 +174,13 @@ namespace AERS.EmergencyAlert.CAP
         public AffectedArea(string areaString)
         {
 
-            // Uses XMLParser to parse areaString.
-            XMLParser XMLParser = new XMLParser(areaString);
+            // Uses XMLDoc to parse areaString.
+            base.XMLDoc = new XMLDoc(areaString);
 
             List<string> nodeNames, nodeValues;
 
             // Extracts the names and values of all the nodes in the <area>.
-            XMLParser.ParseXML(out nodeNames, out nodeValues);
+            XMLDoc.ParseXML(out nodeNames, out nodeValues);
 
             // Sets each value of nodes to the corresponding property of this AffectedArea.
             for (int i = 0; i < nodeNames.Count; i++)

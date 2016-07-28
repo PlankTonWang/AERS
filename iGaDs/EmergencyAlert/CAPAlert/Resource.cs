@@ -129,13 +129,13 @@ namespace AERS.EmergencyAlert.CAP
         public Resource(string resourceString)
         {
 
-            // Uses XMLParser to parse resourceString.
-            XMLParser XMLParser = new XMLParser(resourceString);
+            // Uses XMLDoc to parse resourceString.
+            base.XMLDoc = new XMLDoc(resourceString);
 
             List<string> nodeNames, nodeValues;
 
             // Extracts the names and values of all the nodes in the <resource>.
-            XMLParser.ParseXML(out nodeNames, out nodeValues);
+            XMLDoc.ParseXML(out nodeNames, out nodeValues);
 
             // Sets each value of nodes to the corresponding property of this Resource.
             for (int i = 0; i < nodeNames.Count; i++)
