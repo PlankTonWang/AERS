@@ -4,18 +4,6 @@
 * 
 * Copyright (c) 2016 OpenISDM
 * 
-* Project Name:
-* 
-* 		AERS (Active Emergency Reponse System) framework
-* 
-* Version:
-* 
-* 		1.0
-* 
-* File Name:
-* 
-* 		Value.cs
-* 
 * Abstract:
 * 
 * 		Value class is defined to store some valueName-value pair elements of an CAP alert.

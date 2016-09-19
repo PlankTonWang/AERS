@@ -4,18 +4,6 @@
 * 
 * Copyright (c) 2016 OpenISDM
 * 
-* Project Name:
-* 
-* 		AERS (Active Emergency Reponse System) framework
-* 
-* Version:
-* 
-* 		1.0
-* 
-* File Name:
-* 
-* 		CAPAlert.cs
-* 
 * Abstract:
 * 
 * 		CAPAlert class is the main structrue representing an CAP alert (Common Alerting Protocol message), 

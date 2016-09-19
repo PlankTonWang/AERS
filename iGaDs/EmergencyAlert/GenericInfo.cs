@@ -4,21 +4,9 @@
 * 
 * Copyright (c) 2016 OpenISDM
 * 
-* Project Name:
-* 
-* 		AERS (Active Emergency Reponse System) framework
-* 
-* Version:
-* 
-* 		1.0
-* 
-* File Name:
-* 
-* 		GenericInfo.cs
-* 
 * Abstract:
 * 
-* 		GenericInfo class defines some basic properties for recording further information.
+* 		GenericInfo class defines some basic properties for recording further information of an alert.
 * 
 */
 

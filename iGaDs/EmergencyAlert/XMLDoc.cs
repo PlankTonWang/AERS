@@ -4,39 +4,11 @@
  * 
  * Copyright (c) 2016 OpenISDM
  * 
- * Project Name:
- * 
- * 		AERS (Active Emergency Reponse System) framework
- * 
- * Version:
- * 
- * 		1.0
- * 
- * File Name:
- * 
- * 		XMLDoc.cs
- * 
  * Abstract:
  * 
  * 		XMLDoc class implements a XML parser for parsing XML string into two string-lists,
  *      that respectively contains names and values of all the nodes in the XML string.   
- * 
- * Authors:
- * 
- * 		Gary Wang, garywang5566@gmail.com 20-May-2016
- * 
- * License:
- * 
- * 		GPL 3.0 This file is subject to the terms and conditions defined
- * 		in file 'COPYING.txt', which is part of this source code package.
- * 
- * Major Revisions:
- * 	
- *     None
  *
- * Environment:
- *
- *     .NET Framework 4.5.2
  */
 
 using System.Collections.Generic;
